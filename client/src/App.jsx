@@ -13,12 +13,40 @@ import {
   Profile,
   Admin,
 } from "./pages";
+import { toast } from "react-toastify";
+
+// Import Action
+import { action as registerAction } from "./pages/Register";
+import { action as loginAction } from "./pages/Login";
+import { action as addJobAction } from "./pages/AddJob";
+import { action as editJobAction } from "./pages/EditJob";
+import { action as deleteJobAction } from "./pages/DeleteJob";
+import { action as editProfileAction } from "./pages/Profile";
+
+// Import Loader
+import { loader as dashboardLoader } from "./pages/DashboardLayout";
+import { loader as allJobsLoader } from "./pages/AllJobs";
+import { loader as editJobLoader } from "./pages/EditJob";
+import { loader as adminLoader } from "./pages/Admin";
+import { loader as statsLoader } from "./pages/Stats";
 
 //Dark Theme Enabled
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("dark-theme") === "true";
   document.body.classList.toggle("dark-theme", isDarkTheme);
   return isDarkTheme;
+};
+
+export const loader = async ({ request }) => {
+  try {
+    const { data } = await customFetch.get("/jobs");
+    return {
+      data,
+    };
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
 };
 
 checkDefaultTheme();
@@ -36,38 +64,49 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+        action: registerAction,
       },
       {
         path: "login",
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "dashboard",
         element: <DashboardLayout />,
+        loader: dashboardLoader,
         children: [
           {
             index: true,
             element: <AddJob />,
+            action: addJobAction,
           },
           {
             path: "all-jobs",
             element: <AllJobs />,
+            loader: allJobsLoader,
           },
           {
-            path: "edit-job",
+            path: "edit-job/:id",
             element: <EditJob />,
+            loader: editJobLoader,
+            action: editJobAction,
           },
+          { path: "delete-job/:id", action: deleteJobAction },
           {
             path: "stats",
             element: <Stats />,
+            loader: statsLoader,
           },
           {
             path: "profile",
             element: <Profile />,
+            action: editProfileAction,
           },
           {
             path: "admin",
             element: <Admin />,
+            loader: adminLoader,
           },
         ],
       },

@@ -6,6 +6,7 @@ import express from "express";
 const app = express();
 import morgan from "morgan";
 import mongoose from 'mongoose';
+
 import cookieParser from 'cookie-parser';
 
 // CUSTOM ROUTER IMPORT
@@ -17,12 +18,31 @@ import userRouter from './routes/userRouter.js';
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 import { authenticateUser } from './middleware/authMiddleware.js';
 
+// Public
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
+// Public Config
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, "./public")));
+
+// Cloudinary Import
+import cloudinary from "cloudinary";
+// Cloudinary Config
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET,
+});
+
+// Check Environment
 if (process.env.NODE_ENV === "development") {
     app.use(morgan('dev'));
 };
 
 app.use(cookieParser());
 app.use(express.json());
+
 
 app.get("/", (req, res) => {
     res.send("Hello World");
@@ -32,6 +52,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
+
 
 // Not Found Middleware
 app.use('*', (req, res) => {

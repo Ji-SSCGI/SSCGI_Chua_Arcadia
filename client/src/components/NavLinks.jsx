@@ -9,6 +9,8 @@ const NavLinks = ({ isBigSidebar }) => {
     <div className="nav-links">
       {Links.map((Link) => {
         const { text, path, icon } = Link;
+        const { role } = user;
+        if (role !== "admin" && path === "admin") return;
         return (
           <NavLink
             to={path}

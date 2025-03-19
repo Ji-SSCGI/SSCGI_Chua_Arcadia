@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import { USER_ROLE } from "../utils/constants.js";
 
 const UserSchema = new mongoose.Schema({
+    avatar: String,
+    avatarPublicId: String,
     name: String,
     email: String,
     password: String,
@@ -21,7 +23,7 @@ const UserSchema = new mongoose.Schema({
     createdBy: {
         type: mongoose.Types.ObjectId,
         ref: "User",
-    }
+    },
 }, { timestamps: true });
 
 UserSchema.methods.toJSON = function () {
