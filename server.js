@@ -25,7 +25,7 @@ import path from "path";
 
 // Public Config
 const __dirname = dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.resolve(__dirname, "./public")));
+app.use(express.static(path.resolve(__dirname, "./client/dist")));
 
 // Cloudinary Import
 import cloudinary from "cloudinary";
