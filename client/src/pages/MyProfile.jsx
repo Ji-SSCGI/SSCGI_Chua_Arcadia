@@ -14,7 +14,7 @@ export const action = async ({ request }) => {
 
   const file = formData.get("avatar");
   if (file && file.size > 500000) {
-    toast.error("Image size too large");
+    toast.error("Image size too large.");
     return null;
   }
 
@@ -64,7 +64,7 @@ const Profile = () => {
             type="submit"
             disabled={isSubmitting}
           >
-            {isSubmitting ? "submitting..." : "save changes"}
+            {isSubmitting ? "Submitting..." : "Save"}
           </button>
         </div>
       </Form>

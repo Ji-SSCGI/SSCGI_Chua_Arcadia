@@ -8,7 +8,6 @@ import { log } from "console";
 export const getCurrentUser = async (req, res) => {
     const user = await User.findOne({ _id: req.user.userId });
     const userWithoutPassword = user.toJSON();
-    console.log(userWithoutPassword);
     res.status(StatusCodes.OK).json({ user: userWithoutPassword });
 };
 
@@ -19,7 +18,6 @@ export const getApplicationStats = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-    console.log(req.body);
 
     const newUser = { ...req.body };
     delete newUser.password;

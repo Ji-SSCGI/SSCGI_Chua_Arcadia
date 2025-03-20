@@ -6,9 +6,6 @@ import { validateRegisterInput, validateLoginInput, } from '../middleware/valida
 
 const router = Router();
 
-//router.post('/register', validateRegisterInput, register);
-//router.post('/login', validateLogin, login);
-
 router.route("/register").post(validateRegisterInput, register);
 router.route("/login").post(validateLoginInput, login);
 router.route("/logout").get(logout);

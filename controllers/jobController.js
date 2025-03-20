@@ -76,12 +76,12 @@ export const deleteJob = async (req, res) => {
     res.status(StatusCodes.OK).json({ msg: "Job deleted.", job: removedJob });
 };
 
+// GET STATS
 export const showStats = async (req, res) => {
     let stats = await Job.aggregate([
         { $match: { createdBy: req.user.userId } },
         { $group: { _id: "$jobStatus", count: { $sum: 1 } } }
     ]);
-    console.log(stats);
 
     stats = stats.reduce((acc, curr) => {
         const { _id: title, count } = curr;
@@ -106,7 +106,6 @@ export const showStats = async (req, res) => {
         { $sort: { "_id.year": -1, "_id.month": -1 } },
         { $limit: 6 },
     ]);
-    console.log(monthlyApplications);
     monthlyApplications = monthlyApplications
         .map((item) => {
             const {
