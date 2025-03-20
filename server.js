@@ -55,7 +55,7 @@ app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
 
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "./public", "index.html"));
+    res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
 });
 
 // Not Found Middleware
