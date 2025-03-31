@@ -24,9 +24,7 @@ const SmallSidebar = () => {
           >
             <FaTimes />
           </button>
-          <header>
-            <Logo />
-          </header>
+          <header>{/*<Logo />*/}</header>
           <NavLinks />
         </div>
       </div>

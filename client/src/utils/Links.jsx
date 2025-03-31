@@ -8,13 +8,13 @@ import { MdAdminPanelSettings } from "react-icons/md";
 
 const Links = [
   {
-    text: "Add Job",
+    text: "Add Reservation",
     path: ".",
     icon: <FaWpforms />,
   },
   {
-    text: "All Jobs",
-    path: "all-jobs",
+    text: "All Reservations",
+    path: "all-reservations",
     icon: <MdQueryStats />,
   },
   {

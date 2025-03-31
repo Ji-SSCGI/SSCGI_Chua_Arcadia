@@ -7,6 +7,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0 0.5rem;
+    background-color: #7dd858;
   }
   .img {
     width: 25px;
@@ -38,6 +39,7 @@ const Wrapper = styled.div`
     cursor: pointer;
     width: 100%;
     height: 100%;
+    background-color: #7dd858;
   }
 `;
 

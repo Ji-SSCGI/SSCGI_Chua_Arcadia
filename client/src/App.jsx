@@ -2,13 +2,15 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   HomeLayout,
   Landing,
-  Register,
+  Events,
+  Publications,
   Login,
+  Register,
   DashboardLayout,
   Error,
-  AllJobs,
-  AddJob,
-  EditJob,
+  AllReservations,
+  AddReservation,
+  EditReservation,
   Stats,
   Profile,
   Admin,
@@ -18,15 +20,15 @@ import { toast } from "react-toastify";
 // Import Action
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
-import { action as addJobAction } from "./pages/AddJob";
-import { action as editJobAction } from "./pages/EditJob";
-import { action as deleteJobAction } from "./pages/DeleteJob";
+import { action as addReservationAction } from "./pages/AddReservation";
+import { action as editReservationAction } from "./pages/EditReservation";
+import { action as deleteReservationAction } from "./pages/DeleteReservation";
 import { action as editProfileAction } from "./pages/Profile";
 
 // Import Loader
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
-import { loader as allJobsLoader } from "./pages/AllJobs";
-import { loader as editJobLoader } from "./pages/EditJob";
+import { loader as allReservationLoader } from "./pages/AllReservations";
+import { loader as editReservationLoader } from "./pages/EditReservation";
 import { loader as adminLoader } from "./pages/Admin";
 import { loader as statsLoader } from "./pages/Stats";
 
@@ -62,14 +64,22 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
-        path: "register",
-        element: <Register />,
-        action: registerAction,
+        path: "events",
+        element: <Events />,
+      },
+      {
+        path: "publications",
+        element: <Publications />,
       },
       {
         path: "login",
         element: <Login />,
         action: loginAction,
+      },
+      {
+        path: "register",
+        element: <Register />,
+        action: registerAction,
       },
       {
         path: "dashboard",
@@ -78,21 +88,21 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <AddJob />,
-            action: addJobAction,
+            element: <AddReservation />,
+            action: addReservationAction,
           },
           {
-            path: "all-jobs",
-            element: <AllJobs />,
-            loader: allJobsLoader,
+            path: "all-reservations",
+            element: <AllReservations />,
+            loader: allReservationLoader,
           },
           {
-            path: "edit-job/:id",
-            element: <EditJob />,
-            loader: editJobLoader,
-            action: editJobAction,
+            path: "edit-reservation/:id",
+            element: <EditReservation />,
+            loader: editReservationLoader,
+            action: editReservationAction,
           },
-          { path: "delete-job/:id", action: deleteJobAction },
+          { path: "delete-reservation/:id", action: deleteReservationAction },
           {
             path: "stats",
             element: <Stats />,

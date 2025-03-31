@@ -1,6 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
-import { JobsContainer, SearchContainer } from "../components";
+import { EventsContainer, SearchContainer } from "../components";
 import customFetch from "../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
 import { useContext, createContext } from "react";
@@ -25,17 +25,17 @@ export const loader = async ({ request }) => {
   }
 };
 
-const AllJobsContext = createContext();
+const AllReservationContext = createContext();
 
-const AllJobs = () => {
+const AllReservations = () => {
   const { data, searchValues } = useLoaderData();
   return (
-    <AllJobsContext.Provider value={{ data, searchValues }}>
+    <AllReservationContext.Provider value={{ data, searchValues }}>
       <SearchContainer />
-      <JobsContainer />
-    </AllJobsContext.Provider>
+      <EventsContainer />
+    </AllReservationContext.Provider>
   );
 };
 
-export const useAllJobsContext = () => useContext(AllJobsContext);
-export default AllJobs;
+export const useAllReservationContext = () => useContext(AllReservationContext);
+export default AllReservations;

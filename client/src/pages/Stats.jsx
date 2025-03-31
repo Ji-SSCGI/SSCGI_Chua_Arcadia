@@ -2,6 +2,7 @@ import React from "react";
 import { StatsContainer, ChartsContainer } from "../components";
 import customFetch from "../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 export const loader = async () => {
   try {
@@ -18,7 +19,9 @@ const Stats = () => {
   return (
     <>
       <StatsContainer defaultStats={defaultStats} />
-      <ChartsContainer data={monthlyApplications} />
+      {monthlyApplications?.length > 0 && (
+        <ChartsContainer data={monthlyApplications} />
+      )}
     </>
   );
 };

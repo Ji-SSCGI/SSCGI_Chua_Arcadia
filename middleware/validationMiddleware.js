@@ -1,6 +1,8 @@
 import { body, param, validationResult } from "express-validator";
 import { BadRequestError, NotFoundError, UnauthorizedError } from "../errors/customErrors.js";
 import { JOB_STATUS, JOB_TYPE } from "../utils/constants.js";
+import { RESERVATION_STATUS, RESERVATION_TYPE, NUMBER_OF_PEOPLE_RANGES } from "../utils/constants.js";
+
 import mongoose from "mongoose";
 import Job from "../models/JobModel.js";
 import User from "../models/UserModel.js";
@@ -71,6 +73,40 @@ export const validateUpdateUserInput = withValidationErrors([
         }),
     body("lastName").notEmpty().withMessage("Last name is required."),
     body("location").notEmpty().withMessage("Location is required."),
+]);
+
+// VALIDATE RESERVATION INPUT
+export const validateReservationInput = withValidationErrors([
+    body("clientName")
+        .notEmpty()
+        .withMessage("Client name is required."),
+    body("clientEmail")
+        .isEmail()
+        .withMessage("Please enter a valid email address.")  // Validate email address
+        .notEmpty()
+        .withMessage("Client email is required."),
+    body("phoneNumber")
+        .matches(/^\+?[1-9]\d{1,14}$/)
+        .withMessage("Please enter a valid phone number in E.164 format.")  // Validate phone number
+        .notEmpty()
+        .withMessage("Phone number is required."),
+    body("reservationType")
+        .isIn(Object.values(RESERVATION_TYPE))
+        .withMessage("Invalid reservation type.")  // Validate reservation type
+        .notEmpty()
+        .withMessage("Reservation type is required."),
+    body("reservationDate") // Validate reservation date
+        .notEmpty()
+        .withMessage("Reservation date is required."),
+    body("numberOfPeople")
+        .isIn(Object.values(NUMBER_OF_PEOPLE_RANGES))
+        .withMessage("Invalid number of people range.")  // Validate number of people
+        .notEmpty()
+        .withMessage("Number of people is required."),
+    body("reservationStatus")
+        .isIn(Object.values(RESERVATION_STATUS))
+        .withMessage("Invalid reservation status.")  // Validate reservation status
+        .optional()  // Status is optional; if not provided, it will default to 'PENDING'
 ]);
 
 // VALIDATE JOB INPUT

@@ -28,6 +28,7 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     display: grid;
     place-items: center;
+    background-color: #7dd858;
   }
   @media (min-width: 992px) {
     .form-center {

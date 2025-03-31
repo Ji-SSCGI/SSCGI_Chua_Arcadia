@@ -21,16 +21,16 @@ export const action = async ({ request }) => {
   }
 };
 
-const AddJob = () => {
+const AddReservation = () => {
   const { user } = useOutletContext();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "Submitting";
   return (
     <Wrapper>
       <Form method="post" className="form">
-        <h4 className="form-title">Add Job</h4>
+        <h4 className="form-title">Add Reservation</h4>
         <div className="form-center">
-          <FormRow type="text" name="position" />
+          <FormRow type="text" name="Event" />
           <FormRow type="text" name="company" />
           <FormRow
             type="text"
@@ -57,4 +57,4 @@ const AddJob = () => {
   );
 };
 
-export default AddJob;
+export default AddReservation;

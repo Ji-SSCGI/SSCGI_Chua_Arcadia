@@ -2,15 +2,15 @@ import React from "react";
 import Job from "./Job";
 import Wrapper from "../assets/wrappers/JobsContainer";
 import PageBtnContainer from "./PageBtnContainer";
-import { useAllJobsContext } from "../pages/AllJobs";
+import { useAllReservationContext } from "../pages/AllReservations.jsx";
 
-const JobsContainer = () => {
-  const { data } = useAllJobsContext();
+const EventsContainer = () => {
+  const { data } = useAllReservationContext();
   const { jobs, totalJobs, numOfPages } = data;
   if (jobs.length === 0) {
     return (
       <Wrapper>
-        <h2>No jobs to display...</h2>
+        <h2>No events to display...</h2>
       </Wrapper>
     );
   }
@@ -18,7 +18,7 @@ const JobsContainer = () => {
   return (
     <Wrapper>
       <h5>
-        {totalJobs} Job{jobs.length > 1 && "s"} found
+        {totalJobs} Event{jobs.length > 1 && "s"} found
       </h5>
       <div className="jobs">
         {jobs.map((job) => {
@@ -30,4 +30,4 @@ const JobsContainer = () => {
   );
 };
 
-export default JobsContainer;
+export default EventsContainer;

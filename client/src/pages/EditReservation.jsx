@@ -33,7 +33,7 @@ export const action = async ({ request, params }) => {
   }
 };
 
-const EditJob = () => {
+const EditReservation = () => {
   const params = useParams();
   const { job } = useLoaderData();
   const navigation = useNavigation();
@@ -78,4 +78,4 @@ const EditJob = () => {
   );
 };
 
-export default EditJob;
+export default EditReservation;

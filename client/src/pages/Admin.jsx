@@ -22,14 +22,14 @@ const Admin = () => {
   return (
     <Wrapper>
       <StatItem
-        title="current users"
+        title="Current Users"
         count={users}
         color="#e9b949"
         bcg="#fcefc7"
         icon={<FaSuitcaseRolling />}
       />
       <StatItem
-        title="total jobs"
+        title="Total Reservations"
         count={jobs}
         color="#647acb"
         bcg="#e0e8f9"

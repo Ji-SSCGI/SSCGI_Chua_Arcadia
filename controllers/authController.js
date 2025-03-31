@@ -4,7 +4,6 @@ import { comparePassword, hashPassword } from "../utils/passwordUtil.js";
 import { UnauthenticatedError } from "../errors/customErrors.js";
 import { createJWT } from "../utils/tokenUtils.js";
 
-
 // REGISTER
 export const register = async (req, res) => {
     const isFirstAccount = (await User.countDocuments()) === 0

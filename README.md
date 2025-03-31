@@ -6332,6 +6332,7 @@ Stats.jsx
 
 ```js
 export const loader = async () => {
+  
   const response = await customFetch.get("/jobs/stats");
   return response.data;
 };

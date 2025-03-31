@@ -3,10 +3,10 @@ import { FormRow, FormRowSelect, SubmitBtn } from ".";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { Form, useSubmit, Link } from "react-router-dom";
 import { JOB_TYPE, JOB_STATUS, JOB_SORT_BY } from "../../../utils/constants";
-import { useAllJobsContext } from "../pages/AllJobs";
+import { useAllReservationContext } from "../pages/AllReservations.jsx";
 
 const SearchContainer = () => {
-  const { searchValues } = useAllJobsContext();
+  const { searchValues } = useAllReservationContext();
   const { search, jobStatus, jobType, sort } = searchValues;
   const submit = useSubmit();
   // DEBOUNCE ON SEARCH
@@ -62,7 +62,10 @@ const SearchContainer = () => {
             }}
           />
 
-          <Link to="/dashboard/all-jobs" className="btn form-btn delete-btn">
+          <Link
+            to="/dashboard/all-reservations"
+            className="btn form-btn delete-btn"
+          >
             Reset
           </Link>
         </div>

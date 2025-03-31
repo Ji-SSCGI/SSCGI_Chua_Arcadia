@@ -7,7 +7,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
-import { FormRow, Logo, SubmitBtn } from "../components";
+import { FormRow, SubmitBtn } from "../components";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
@@ -45,7 +45,6 @@ const Login = () => {
   return (
     <Wrapper>
       <Form method="post" className="form">
-        <Logo />
         <h4>login</h4>
         <FormRow type="email" name="email" defaultValue="" />
         <FormRow type="password" name="password" defaultValue="" />

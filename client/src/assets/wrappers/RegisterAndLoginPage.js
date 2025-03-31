@@ -11,7 +11,7 @@ const Wrapper = styled.section`
   }
   .form {
     max-width: 400px;
-    border-top: 5px solid var(--primary-500);
+    border-top: 5px solid  #7dd858;
   }
   h4 {
     text-align: center;
@@ -24,9 +24,10 @@ const Wrapper = styled.section`
   }
   .btn {
     margin-top: 1rem;
+    background-color: #7dd858;
   }
   .member-btn {
-    color: var(--primary-500);
+    color: #7dd858;
     letter-spacing: var(--letter-spacing);
     margin-left: 0.25rem;
   }
