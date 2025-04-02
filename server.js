@@ -9,14 +9,12 @@ import mongoose from 'mongoose';
 import helmet from "helmet";
 import mongoSanitize from "express-mongo-sanitize";
 
-
 import cookieParser from 'cookie-parser';
 
-// CUSTOM ROUTER IMPORT
-import jobRouter from "./routes/jobRouter.js";
+// CUSTOM ROUTER IMPORT 
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
-import reservationRouter from "./routes/reservationRouter.js"
+import eventRouter from "./routes/eventRouter.js"
 
 // Middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
@@ -61,8 +59,7 @@ app.get("/", (req, res) => {
 // API
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
-app.use("/api/v1/jobs", authenticateUser, jobRouter);
-app.use("/api/v1/reservations", authenticateUser, reservationRouter);
+app.use("/api/v1/events", authenticateUser, eventRouter);
 
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));

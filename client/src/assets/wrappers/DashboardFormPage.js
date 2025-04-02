@@ -4,6 +4,7 @@ const Wrapper = styled.section`
   border-radius: var(--border-radius);
   width: 100%;
   background: var(--background-secondary-color);
+  color: var(--secondary-color);
   padding: 3rem 2rem 4rem;
   .form-title {
     margin-bottom: 2rem;
@@ -24,12 +25,13 @@ const Wrapper = styled.section`
     row-gap: 1rem;
   }
   .form-btn {
+    background-color: #9ac53c;
     align-self: end;
     margin-top: 1rem;
     display: grid;
     place-items: center;
-    background-color: #7dd858;
   }
+
   @media (min-width: 992px) {
     .form-center {
       grid-template-columns: 1fr 1fr;

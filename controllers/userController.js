@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import User from "../models/UserModel.js";
-import Job from "../models/JobModel.js";
+import Event from "../models/EventModel.js";
 import cloudinary from "cloudinary";
 import { formatImage } from "../middleware/multerMiddleware.js";
 
@@ -12,8 +12,8 @@ export const getCurrentUser = async (req, res) => {
 
 export const getApplicationStats = async (req, res) => {
     const users = await User.countDocuments();
-    const jobs = await Job.countDocuments();
-    res.status(StatusCodes.OK).json({ users, jobs });
+    const events = await Event.countDocuments();
+    res.status(StatusCodes.OK).json({ users, events });
 };
 
 export const updateUser = async (req, res) => {

@@ -1,10 +1,8 @@
 import { body, param, validationResult } from "express-validator";
 import { BadRequestError, NotFoundError, UnauthorizedError } from "../errors/customErrors.js";
-import { JOB_STATUS, JOB_TYPE } from "../utils/constants.js";
-import { RESERVATION_STATUS, RESERVATION_TYPE, NUMBER_OF_PEOPLE_RANGES } from "../utils/constants.js";
+import { EVENT_TYPE, JOB_STATUS, JOB_TYPE } from "../utils/constants.js";
 
 import mongoose from "mongoose";
-import Job from "../models/JobModel.js";
 import User from "../models/UserModel.js";
 
 const withValidationErrors = (validateValues) => {
@@ -14,7 +12,7 @@ const withValidationErrors = (validateValues) => {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
                 const errorMessages = errors.array().map((error) => error.msg);
-                if (errorMessages[0].startsWith("No job")) {
+                if (errorMessages[0].startsWith("No event")) {
                     throw new NotFoundError(errorMessages);
                 }
 
@@ -75,51 +73,22 @@ export const validateUpdateUserInput = withValidationErrors([
     body("location").notEmpty().withMessage("Location is required."),
 ]);
 
-// VALIDATE RESERVATION INPUT
-export const validateReservationInput = withValidationErrors([
-    body("clientName")
+// VALIDATE EVENT INPUT
+export const validateEventInput = withValidationErrors([
+    body("eventTitle")
         .notEmpty()
-        .withMessage("Client name is required."),
-    body("clientEmail")
-        .isEmail()
-        .withMessage("Please enter a valid email address.")  // Validate email address
+        .withMessage("Event title is required."),
+    body("eventDescription")
         .notEmpty()
-        .withMessage("Client email is required."),
-    body("phoneNumber")
-        .matches(/^\+?[1-9]\d{1,14}$/)
-        .withMessage("Please enter a valid phone number in E.164 format.")  // Validate phone number
+        .withMessage("Event description is required."),
+    body("eventType")
+        .isIn(Object.values(EVENT_TYPE))
+        .withMessage("Invalid event type.")  // Validate reservation type
         .notEmpty()
-        .withMessage("Phone number is required."),
-    body("reservationType")
-        .isIn(Object.values(RESERVATION_TYPE))
-        .withMessage("Invalid reservation type.")  // Validate reservation type
+        .withMessage("Event type is required."),
+    body("eventDate") // Validate reservation date
         .notEmpty()
-        .withMessage("Reservation type is required."),
-    body("reservationDate") // Validate reservation date
-        .notEmpty()
-        .withMessage("Reservation date is required."),
-    body("numberOfPeople")
-        .isIn(Object.values(NUMBER_OF_PEOPLE_RANGES))
-        .withMessage("Invalid number of people range.")  // Validate number of people
-        .notEmpty()
-        .withMessage("Number of people is required."),
-    body("reservationStatus")
-        .isIn(Object.values(RESERVATION_STATUS))
-        .withMessage("Invalid reservation status.")  // Validate reservation status
-        .optional()  // Status is optional; if not provided, it will default to 'PENDING'
-]);
-
-// VALIDATE JOB INPUT
-export const validateJobInput = withValidationErrors([
-    body("company").notEmpty().withMessage("Company is required."),
-    body("position").notEmpty().withMessage("Position is required."),
-    body("jobLocation").notEmpty().withMessage("Job location is required."),
-    body("jobStatus")
-        .isIn(Object.values(JOB_STATUS))
-        .withMessage("Invalid job status."),
-    body("jobType")
-        .isIn(Object.values(JOB_TYPE))
-        .withMessage("Invalid job type."),
+        .withMessage("Event date is required."),
 ]);
 
 // VALIDATE PARAMETERS
@@ -127,12 +96,12 @@ export const validateIdParameters = withValidationErrors([
     param("id").custom(async (value, { req }) => {
         const isValidMongoId = mongoose.Types.ObjectId.isValid(value);
         if (!isValidMongoId) throw new BadRequestError("Invalid MongoDB Id.");
-        const job = await Job.findById(value);
-        if (!job) throw new NotFoundError(`No job with Id: ${value}`);
+        const event = await Event.findById(value);
+        if (!event) throw new NotFoundError(`No event with Id: ${value}`);
 
         // Check Role and Ownership
         const isAdmin = req.user.role === "admin";
-        const isOwner = req.user.userId === job.createdBy.toString();
+        const isOwner = req.user.userId === event.createdBy.toString();
 
         if (!isAdmin || isOwner)
             throw new UnauthorizedError("Unauthorized access to this page.");

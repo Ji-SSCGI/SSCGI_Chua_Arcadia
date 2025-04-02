@@ -6,8 +6,6 @@ import { createJWT } from "../utils/tokenUtils.js";
 
 // REGISTER
 export const register = async (req, res) => {
-    const isFirstAccount = (await User.countDocuments()) === 0
-    req.body.role = isFirstAccount ? "admin" : "user";
 
     // Password Hashing
     const hashedPassword = await hashPassword(req.body.password);

@@ -32,3 +32,14 @@ export const checkForTestUser = (req, res, next) => {
     }
     next();
 };
+
+// Middleware to ensure only superAdmins can access a route
+export const superAdminOnly = (req, res, next) => {
+    const user = req.user; // Assuming user info is attached to the request (e.g., from JWT)
+
+    if (user.role !== "superAdmin") {
+        throw new UnauthorizedError("You do not have permission to view this page.");
+    }
+
+    next();
+};

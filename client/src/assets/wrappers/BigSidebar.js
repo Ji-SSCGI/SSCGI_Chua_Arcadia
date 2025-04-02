@@ -6,7 +6,7 @@ const Wrapper = styled.aside`
     display: block;
     box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
     .sidebar-container {
-      color: var(--text-secondary-color);;
+      background: var(--background-secondary-color);
       min-height: 100vh;
       height: 100%;
       width: 250px;
@@ -42,10 +42,9 @@ const Wrapper = styled.aside`
     }
     .nav-link:hover {
       padding-left: 3rem;
-      color: #7dd858;
+      color: #9ac53c;
       transition: var(--transition);
     }
-
     .icon {
       font-size: 1.5rem;
       margin-right: 1rem;
@@ -53,7 +52,10 @@ const Wrapper = styled.aside`
       place-items: center;
     }
     .active {
-      color: #7dd858;
+      color: #9ac53c;
+    }
+    .pending {
+      background: var(--background-color);
     }
   }
 `;

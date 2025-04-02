@@ -14,6 +14,14 @@ const Wrapper = styled.section`
     grid-template-columns: 1fr;
     row-gap: 2rem;
   }
+
+  p {
+    text-transform: none;
+  }
+
+  .btn .btn-edit {
+    background-color: red;
+  }
   @media (min-width: 1120px) {
     .jobs {
       grid-template-columns: 1fr 1fr;

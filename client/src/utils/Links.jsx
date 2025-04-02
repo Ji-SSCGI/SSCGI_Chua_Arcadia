@@ -5,17 +5,18 @@ import { MdQueryStats } from "react-icons/md";
 import { FaWpforms } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 import { MdAdminPanelSettings } from "react-icons/md";
+import { MdPeople } from "react-icons/md";
 
 const Links = [
   {
-    text: "Add Reservation",
+    text: "Add Event",
     path: ".",
     icon: <FaWpforms />,
   },
   {
-    text: "All Reservations",
-    path: "all-reservations",
-    icon: <MdQueryStats />,
+    text: "All Events",
+    path: "all-events",
+    icon: <FaWpforms />,
   },
   {
     text: "Stats",
@@ -32,6 +33,11 @@ const Links = [
     path: "admin",
     icon: <MdAdminPanelSettings />,
   },
-];
+  {
+    text: "Create Account",
+    path: "create-account",
+    icon: <MdPeople />,
+  },
+];  
 
 export default Links;

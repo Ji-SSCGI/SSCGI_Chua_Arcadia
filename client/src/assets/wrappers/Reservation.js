@@ -32,7 +32,7 @@ const Wrapper = styled.article`
     }
     p {
       margin: 0;
-      text-transform: capitalize;
+      text-transform: none;
       letter-spacing: var(--letter-spacing);
       color: var(--text-secondary-color);
     }
@@ -72,9 +72,11 @@ const Wrapper = styled.article`
     font-size: 0.85rem;
     display: flex;
     align-items: center;
+    background-color: red;
   }
   .edit-btn {
     margin-right: 0.5rem;
+    background-color: #9ac53c;
   }
 `;
 

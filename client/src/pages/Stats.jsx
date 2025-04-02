@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const loader = async () => {
   try {
-    const response = await customFetch.get("/jobs/stats");
+    const response = await customFetch.get("/events/stats");
     return response.data;
   } catch (error) {
     return error;

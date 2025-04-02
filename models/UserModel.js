@@ -20,10 +20,6 @@ const UserSchema = new mongoose.Schema({
         enum: Object.values(USER_ROLE),
         default: USER_ROLE.USER,
     },
-    createdBy: {
-        type: mongoose.Types.ObjectId,
-        ref: "User",
-    },
 }, { timestamps: true });
 
 UserSchema.methods.toJSON = function () {

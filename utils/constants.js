@@ -18,7 +18,7 @@ export const JOB_SORT_BY = {
 }
 
 export const USER_ROLE = {
-    USER: "user",
+    SUPERADMIN: "superAdmin",
     ADMIN: "admin",
 }
 
@@ -41,4 +41,32 @@ export const RESERVATION_STATUS = {
     PENDING: "Pending",
     CONFIRMED: "Confirmed",
     CANCELLED: "Cancelled",
+}
+
+export const RESERVATION_SORT_BY = {
+    NEWEST_FIRST: "Newest",
+    OLDEST_FIRST: "Oldest",
+    ASCENDING: "A-Z",
+    DESCENDING: "Z-A",
+}
+
+export const EVENT_STATUS = {
+    UPCOMING: "Upcoming",
+    ONGOING: "Ongoing",
+    COMPLETED: "Completed",
+    CANCELLED: "Cancelled"
+};
+
+export const EVENT_TYPE = {
+    CONFERENCE: "Conference",
+    WEBINAR: "Webinar",
+    WORKSHOP: "Workshop",
+    SEMINAR: "Seminar"
+};
+
+export const EVENT_SORT_BY = {
+    NEWEST_FIRST: "Newest",
+    OLDEST_FIRST: "Oldest",
+    ASCENDING: "A-Z",
+    DESCENDING: "Z-A",
 }

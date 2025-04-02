@@ -17,7 +17,7 @@ export const loader = async () => {
 };
 
 const Admin = () => {
-  const { users, jobs } = useLoaderData();
+  const { users, events } = useLoaderData();
 
   return (
     <Wrapper>
@@ -29,8 +29,8 @@ const Admin = () => {
         icon={<FaSuitcaseRolling />}
       />
       <StatItem
-        title="Total Reservations"
-        count={jobs}
+        title="Total Events"
+        count={events}
         color="#647acb"
         bcg="#e0e8f9"
         icon={<FaCalendarCheck />}

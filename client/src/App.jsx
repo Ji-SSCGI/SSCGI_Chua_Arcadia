@@ -8,27 +8,29 @@ import {
   Register,
   DashboardLayout,
   Error,
-  AllReservations,
-  AddReservation,
-  EditReservation,
+  AddEvent,
+  AllEvents,
   Stats,
   Profile,
   Admin,
+  CreateAccount,
 } from "./pages";
 import { toast } from "react-toastify";
 
 // Import Action
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
-import { action as addReservationAction } from "./pages/AddReservation";
-import { action as editReservationAction } from "./pages/EditReservation";
-import { action as deleteReservationAction } from "./pages/DeleteReservation";
+import { action as addEventAction } from "./pages/AddEvent";
+import { action as createAccountAction } from "./pages/CreateAccount";
+
+//import { action as editReservationAction } from "./pages/EditReservation";
+//import { action as deleteReservationAction } from "./pages/DeleteReservation";
 import { action as editProfileAction } from "./pages/Profile";
 
 // Import Loader
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
-import { loader as allReservationLoader } from "./pages/AllReservations";
-import { loader as editReservationLoader } from "./pages/EditReservation";
+import { loader as allEventsLoader } from "./pages/AllEvents";
+//import { loader as editReservationLoader } from "./pages/EditReservation";
 import { loader as adminLoader } from "./pages/Admin";
 import { loader as statsLoader } from "./pages/Stats";
 
@@ -77,32 +79,20 @@ const router = createBrowserRouter([
         action: loginAction,
       },
       {
-        path: "register",
-        element: <Register />,
-        action: registerAction,
-      },
-      {
         path: "dashboard",
         element: <DashboardLayout />,
         loader: dashboardLoader,
         children: [
           {
             index: true,
-            element: <AddReservation />,
-            action: addReservationAction,
+            element: <AddEvent />,
+            action: addEventAction,
           },
           {
-            path: "all-reservations",
-            element: <AllReservations />,
-            loader: allReservationLoader,
+            path: "all-events",
+            element: <AllEvents />,
+            loader: allEventsLoader,
           },
-          {
-            path: "edit-reservation/:id",
-            element: <EditReservation />,
-            loader: editReservationLoader,
-            action: editReservationAction,
-          },
-          { path: "delete-reservation/:id", action: deleteReservationAction },
           {
             path: "stats",
             element: <Stats />,
@@ -117,6 +107,11 @@ const router = createBrowserRouter([
             path: "admin",
             element: <Admin />,
             loader: adminLoader,
+          },
+          {
+            path: "create-account",
+            element: <CreateAccount />,
+            action: createAccountAction,
           },
         ],
       },

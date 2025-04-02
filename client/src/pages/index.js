@@ -10,8 +10,10 @@ export { default as Register } from './Register';
 export { default as Login } from './Login';
 export { default as Error } from './Error';
 export { default as Stats } from './Stats';
-export { default as AllReservations } from './AllReservations.jsx';
-export { default as AddReservation } from './AddReservation';
+export { default as AddEvent } from './AddEvent';
+export { default as CreateAccount } from './CreateAccount';
+export { default as AllEvents } from './AllEvents';
+
 export { default as EditReservation } from './EditReservation';
 export { default as Profile } from './Profile';
 export { default as Admin } from './Admin';
