@@ -2,60 +2,50 @@ import { StatusCodes } from "http-status-codes";
 import Event from "../models/EventModel.js"
 import mongoose from "mongoose";
 import day from "dayjs";
+import cloudinary from "cloudinary";
+import { formatImage } from "../middleware/multerMiddleware.js";
 
-// CREATE RESERVATION
+// CREATE EVENT
 /* export const createEvent = async (req, res) => {
     req.body.createdBy = req.user.userId;
+    const body = req.body;
     const event = await Event.create(req.body);
     res.status(StatusCodes.CREATED).json({ event });
-}; */
+};  */
 
 export const createEvent = async (req, res) => {
-    const { title, description, location } = req.body;
-    let eventImgUrl = '';
-    let eventImgPublicId = '';
-
-    // If a file (image) is uploaded, handle the upload to Cloudinary
+    // Log incoming request to see if the file is coming through
+    console.log("Received request body:", req.body);  // Log the body
+    console.log("Received file:", req.file);  // Log the file object
+  
+    req.body.createdBy = req.user.userId;  // Assuming req.user is set with the authenticated user's ID
+  
     if (req.file) {
-        try {
-            // Format the image (if any pre-processing needed)
-            const formattedImage = formatImage(req.file); // You can implement any image format/resize logic if needed
-
-            // Upload the image to Cloudinary
-            const response = await cloudinary.v2.uploader.upload(formattedImage);
-
-            // Save the Cloudinary image URL and public ID
-            eventImgUrl = response.secure_url;
-            eventImgPublicId = response.public_id;
-        } catch (error) {
-            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-                msg: "Error uploading the event image to Cloudinary.",
-                error: error.message,
-            });
-        }
+      // If a file is uploaded, upload it to Cloudinary
+      const file = formatImage(req.file);  // Optional image formatting, like resizing
+      try {
+        const response = await cloudinary.v2.uploader.upload(file);
+  
+        // Save the Cloudinary image URL and public ID
+        req.body.eventImg = response.secure_url;
+        req.body.eventImgPublicId = response.public_id;
+      } catch (error) {
+        return res.status(500).json({ msg: "Error uploading the event image", error: error.message });
+      }
     }
-
-    // Create the event in the database
-    const eventData = {
-        title,
-        description,
-        location,
-        createdBy: req.user.userId, // Assuming you have a user object attached to the request
-        eventImg: eventImgUrl, // Save the image URL
-        eventImgPublicId: eventImgPublicId, // Save the image's public ID
-    };
-
+  
     try {
-        // Save the event
-        const event = await Event.create(eventData);
-        return res.status(StatusCodes.CREATED).json({ event });
+      // Create the event in the database
+      const event = await Event.create(req.body);
+      res.status(201).json({ event });
     } catch (error) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            msg: "Error creating the event.",
-            error: error.message,
-        });
+      res.status(500).json({
+        msg: "Error creating the event.",
+        error: error.message,
+      });
     }
-};
+  };
+
 
 // GET ALL RESERVATIONS
 export const getAllEvents = async (req, res) => {

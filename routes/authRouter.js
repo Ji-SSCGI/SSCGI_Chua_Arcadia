@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { register, login, logout } from '../controllers/authController.js';
+import upload from "../middleware/multerMiddleware.js";
 
 // IMPORT INPUT VALIDATION
 import { validateRegisterInput, validateLoginInput } from '../middleware/validationMiddleware.js';

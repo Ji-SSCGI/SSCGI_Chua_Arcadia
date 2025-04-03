@@ -51,6 +51,11 @@ app.use(express.json());
 app.use(helmet());
 app.use(mongoSanitize());
 
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "script-src 'self' https://gc.kes.v2.scr.kaspersky-labs.com; img-src 'self' data: https://res.cloudinary.com;");
+    next();
+});
+
 
 app.get("/", (req, res) => {
     res.send("Hello World");

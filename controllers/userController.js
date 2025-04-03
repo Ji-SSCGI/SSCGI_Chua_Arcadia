@@ -19,6 +19,7 @@ export const getApplicationStats = async (req, res) => {
 export const updateUser = async (req, res) => {
 
     const newUser = { ...req.body };
+    console.log(newUser);
     delete newUser.password;
     if (req.file) {
         const file = formatImage(req.file);

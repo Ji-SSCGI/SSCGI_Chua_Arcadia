@@ -34,18 +34,6 @@ const CreateAccount = () => {
         <h4 className="form-title">Add Account</h4>
         <div className="form-center">
           {/* Reference number will be auto-generated on the backend */}
-          <div className="form-row">
-            <label htmlFor="image" className="form-label">
-              Select an image file (max 0.5 MB):
-            </label>
-            <input
-              type="file"
-              id="avatar"
-              name="avatarPublicId"
-              className="form-input"
-              accept="image/*"
-            />
-          </div>
           <FormRow type="text" name="name" labelText="Name" required />
           <FormRow type="text" name="lastName" labelText="Lastname" required />
           <FormRow

@@ -3,6 +3,8 @@ import User from "../models/UserModel.js";
 import { comparePassword, hashPassword } from "../utils/passwordUtil.js";
 import { UnauthenticatedError } from "../errors/customErrors.js";
 import { createJWT } from "../utils/tokenUtils.js";
+import cloudinary from "cloudinary";
+import { formatImage } from "../middleware/multerMiddleware.js";
 
 // REGISTER
 export const register = async (req, res) => {
