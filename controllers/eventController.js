@@ -6,46 +6,12 @@ import cloudinary from "cloudinary";
 import { formatImage } from "../middleware/multerMiddleware.js";
 
 // CREATE EVENT
-/* export const createEvent = async (req, res) => {
+export const createEvent = async (req, res) => {
     req.body.createdBy = req.user.userId;
     const body = req.body;
     const event = await Event.create(req.body);
     res.status(StatusCodes.CREATED).json({ event });
-};  */
-
-export const createEvent = async (req, res) => {
-    // Log incoming request to see if the file is coming through
-    console.log("Received request body:", req.body);  // Log the body
-    console.log("Received file:", req.file);  // Log the file object
-  
-    req.body.createdBy = req.user.userId;  // Assuming req.user is set with the authenticated user's ID
-  
-    if (req.file) {
-      // If a file is uploaded, upload it to Cloudinary
-      const file = formatImage(req.file);  // Optional image formatting, like resizing
-      try {
-        const response = await cloudinary.v2.uploader.upload(file);
-  
-        // Save the Cloudinary image URL and public ID
-        req.body.eventImg = response.secure_url;
-        req.body.eventImgPublicId = response.public_id;
-      } catch (error) {
-        return res.status(500).json({ msg: "Error uploading the event image", error: error.message });
-      }
-    }
-  
-    try {
-      // Create the event in the database
-      const event = await Event.create(req.body);
-      res.status(201).json({ event });
-    } catch (error) {
-      res.status(500).json({
-        msg: "Error creating the event.",
-        error: error.message,
-      });
-    }
-  };
-
+}; 
 
 // GET ALL RESERVATIONS
 export const getAllEvents = async (req, res) => {

@@ -1,39 +1,38 @@
 import React from "react";
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Wrapper from "../assets/wrappers/Job";
-import JobInfo from "./JobInfo";
+import Wrapper from "../assets/wrappers/Event";
+import EventInfo from "./EventInfo";
 import { Form } from "react-router-dom";
 import day from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 day.extend(advancedFormat);
 
-const Job = ({
+const Event= ({
   _id,
-  position,
-  company,
-  jobLocation,
-  jobType,
+  eventTitle,
+  eventDescription,
+  eventType,
+  eventDate,
   createdAt,
-  jobStatus,
+  eventStatus,
 }) => {
   const date = day(createdAt).format("MMM Do, YYYY");
 
   return (
     <Wrapper>
       <header>
-        <div className="main-icon">{company.charAt(0)}</div>
+        <div className="main-icon">{eventTitle.charAt(0)}</div>
         <div className="info">
-          <h5>{position}</h5>
-          <p>{company}</p>
+          <h5>{eventDescription}</h5>
+          <p>{eventDate}</p>
         </div>
       </header>
       <div className="content">
         <div className="content-center">
-          <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
-          <JobInfo icon={<FaCalendarAlt />} text={date} />
-          <JobInfo icon={<FaBriefcase />} text={jobType} />
-          <div className={`status ${jobStatus.toLowerCase()}`}>{jobStatus}</div>
+          <EventInfo icon={<FaCalendarAlt />} text={date} />
+          <EventInfo icon={<FaBriefcase />} text={eventType} />
+          <div className={`status ${eventStatus.toLowerCase()}`}>{eventStatus}</div>
         </div>
 
         <footer className="actions">
@@ -51,4 +50,4 @@ const Job = ({
   );
 };
 
-export default Job;
+export default Event;

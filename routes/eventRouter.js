@@ -15,7 +15,7 @@ import { checkForTestUser } from "../middleware/authMiddleware.js";
 // Routes for getting all reservations, creating a new reservation
 router.route("/")
     .get(getAllEvents)
-    .post(upload.single("eventImg"), validateEventInput, createEvent);
+    .post(upload.single("eventImg"),validateEventInput, createEvent);
 
 router
     .route("/:id")

@@ -10,11 +10,11 @@ body {
 }
 
 h2{
-  color: #8bb136;
+  color: #00bfa6;
 }
 
 .hero h2{
-  color: #ffffff;
+  color: #00bfa6;
 }
 
 section {
@@ -89,7 +89,6 @@ section {
   align-items: center; /* Centers vertically */
   text-align: center;
   padding: 0 20px;
-  background-color: #9ac53c;
   margin-bottom: 1rem;
   overflow: hidden; /* Prevent overflow if content grows too large */
 }
@@ -98,6 +97,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center; /* Ensures content is aligned in the center */
+  background-color: #00bfa6;
 }
 
 .hero-content h1 {
@@ -128,7 +128,7 @@ section {
 }
 
 .btn-primary {
-  background-color: #7dd858 !important;
+  background-color: #00bfa6 !important;
   color: #fff;
 }
 
@@ -450,7 +450,7 @@ section {
 
 .collab-text h3 {
   margin-bottom: 20px;
-  color: #409c3c;
+  color: #00bfa6;
 }
 
 .collab-text ul li {
@@ -500,7 +500,7 @@ section {
 
 .knowledge-text h3 {
   margin-bottom: 20px;
-  color: #409c3c;
+  color: #00bfa6;
 }
 
 .knowledge-text ul li {

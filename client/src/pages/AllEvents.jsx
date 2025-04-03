@@ -1,5 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
+import { EventsContainer, SearchContainer } from "../components";
 import customFetch from "../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
 import { useContext, createContext } from "react";
@@ -32,14 +33,16 @@ const AllEventsContext = createContext();
 
 // Component for displaying all reservations
 const AllEvents = () => {
-  const { data, searchValues } = useLoaderData(); // Get the data from loader
+  const { data, searchValues } = useLoaderData(); // Get data and searchValues from loader
 
   return (
     <AllEventsContext.Provider value={{ data, searchValues }}>
-      {/* Custom component for displaying the reservations */}
+        <SearchContainer />
+        <EventsContainer />
     </AllEventsContext.Provider>
   );
 };
+
 
 // Custom hook to use the context in other components
 export const useAllEventsContext = () => useContext(AllEventsContext);

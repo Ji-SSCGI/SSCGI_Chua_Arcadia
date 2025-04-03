@@ -6,7 +6,7 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: center;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
-  color: #9ac53c;
+  color: #00bfa6;
   background: var(--background-secondary-color);
   .nav-center {
     display: flex;
@@ -18,7 +18,7 @@ const Wrapper = styled.nav`
     background: transparent;
     border-color: transparent;
     font-size: 1.75rem;
-    color: #9ac53c;
+    color: #00bfa6;
     cursor: pointer;
     display: flex;
     align-items: center;

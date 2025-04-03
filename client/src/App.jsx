@@ -5,7 +5,6 @@ import {
   Events,
   Publications,
   Login,
-  Register,
   DashboardLayout,
   Error,
   AddEvent,
@@ -18,7 +17,6 @@ import {
 import { toast } from "react-toastify";
 
 // Import Action
-import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
 import { action as addEventAction } from "./pages/AddEvent";
 import { action as createAccountAction } from "./pages/CreateAccount";

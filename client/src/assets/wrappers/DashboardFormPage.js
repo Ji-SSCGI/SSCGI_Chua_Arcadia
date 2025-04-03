@@ -25,7 +25,7 @@ const Wrapper = styled.section`
     row-gap: 1rem;
   }
   .form-btn {
-    background-color: #9ac53c;
+    background-color: #00bfa6;
     align-self: end;
     margin-top: 1rem;
     display: grid;
