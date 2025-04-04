@@ -9,28 +9,31 @@ import {
   Error,
   AddEvent,
   AllEvents,
-  Stats,
+  DeleteEvent,
   Profile,
   Admin,
   CreateAccount,
 } from "./pages";
 import { toast } from "react-toastify";
+import EventsPage from "./components/EventsPage";
 
 // Import Action
 import { action as loginAction } from "./pages/Login";
 import { action as addEventAction } from "./pages/AddEvent";
 import { action as createAccountAction } from "./pages/CreateAccount";
 
-//import { action as editReservationAction } from "./pages/EditReservation";
-//import { action as deleteReservationAction } from "./pages/DeleteReservation";
+import { action as editEventAction } from "./pages/EditEvent";
+import { action as deleteEventAction } from "./pages/DeleteEvent";
 import { action as editProfileAction } from "./pages/Profile";
 
 // Import Loader
+//import { loader as eventPageLoader } from "./components/EventsPage";
+
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
 import { loader as allEventsLoader } from "./pages/AllEvents";
-//import { loader as editReservationLoader } from "./pages/EditReservation";
+import { loader as editEventLoader } from "./pages/EditEvent";
 import { loader as adminLoader } from "./pages/Admin";
-import { loader as statsLoader } from "./pages/Stats";
+import EditEvent from "./pages/EditEvent";
 
 //Dark Theme Enabled
 export const checkDefaultTheme = () => {
@@ -92,10 +95,13 @@ const router = createBrowserRouter([
             loader: allEventsLoader,
           },
           {
-            path: "stats",
-            element: <Stats />,
-            loader: statsLoader,
+            path: "edit-event/:id",
+            element: <EditEvent />,
+            loader: editEventLoader,
+            action: editEventAction,
           },
+          { path: "delete-event/:id",
+             action: deleteEventAction },
           {
             path: "profile",
             element: <Profile />,

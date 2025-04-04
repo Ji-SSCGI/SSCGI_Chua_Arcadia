@@ -12,7 +12,6 @@ export { default as Stats } from './Stats';
 export { default as AddEvent } from './AddEvent';
 export { default as CreateAccount } from './CreateAccount';
 export { default as AllEvents } from './AllEvents';
-
-export { default as EditReservation } from './EditReservation';
+export { default as DeleteEvent } from './DeleteEvent';
 export { default as Profile } from './Profile';
 export { default as Admin } from './Admin';

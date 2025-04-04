@@ -5,15 +5,58 @@ import day from "dayjs";
 import cloudinary from "cloudinary";
 import { formatImage } from "../middleware/multerMiddleware.js";
 
-// CREATE EVENT
+/* // CREATE EVENT
 export const createEvent = async (req, res) => {
     req.body.createdBy = req.user.userId;
-    const body = req.body;
     const event = await Event.create(req.body);
     res.status(StatusCodes.CREATED).json({ event });
-}; 
+}; */
 
-// GET ALL RESERVATIONS
+export const createEvent = async (req, res) => {
+    try {
+      const { eventTitle, eventDescription, eventType, eventDate } = req.body;
+      let eventImgUrl = "";
+      let eventImgPublicId = "";
+  
+      // If image is uploaded, handle the image upload
+      if (req.file) {
+        // Format the image before uploading
+        const file = formatImage(req.file);
+  
+        // Upload to Cloudinary
+        const response = await cloudinary.v2.uploader.upload(file, {
+          folder: "events", // Set folder in Cloudinary for image storage
+          resource_type: "image", // Ensure the file is treated as an image
+        });
+  
+        // Store the image URL and Public ID
+        eventImgUrl = response.secure_url; // Cloudinary image URL
+        eventImgPublicId = response.public_id; // Cloudinary public ID (for later deletion if needed)
+      }
+  
+      // Create the new event with or without image
+      const newEvent = new Event({
+        eventTitle,
+        eventDescription,
+        eventType,
+        eventDate,
+        eventImg: eventImgUrl, // Store the image URL
+        eventImgId: eventImgPublicId, // Store the image public ID
+        createdBy: req.user.userId, // Assuming you're storing user info in the request
+      });
+  
+      // Save the event to the database
+      await newEvent.save();
+  
+      // Return the created event as a response
+      res.status(StatusCodes.CREATED).json({ event: newEvent });
+    } catch (error) {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Error creating event." });
+    }
+  };
+
+
+// GET ALL EVENTS
 export const getAllEvents = async (req, res) => {
     const { search, eventStatus, eventType, sort } = req.query;
 
@@ -80,26 +123,8 @@ export const getAllEvents = async (req, res) => {
 
 // GET SINGLE EVENT
 export const getEvent = async (req, res) => {
-    try {
-        // Log the requested event ID for debugging
-        console.log("Requested Event ID:", req.params.id);
-
-        // Fetch the event by ID from the database
-        const event = await Event.findById(req.params.id);
-
-        // If the event doesn't exist, return a 404 error with a helpful message
-        if (!event) {
-            return res.status(StatusCodes.NOT_FOUND).json({ msg: `Event not found with ID: ${req.params.id}` });
-        }
-
-        // If the event is found, send it in the response with a 200 status
-        console.log("Fetched Event:", event);  // Optional: Log the event for debugging
-        res.status(StatusCodes.OK).json({ event });
-    } catch (error) {
-        // Catch any errors (e.g., invalid ID format, database errors) and return a 500 error
-        console.error("Error fetching event:", error);
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: "Error fetching event" });
-    }
+    const event = await Event.findById(req.params.id);
+    res.status(StatusCodes.OK).json({ event });
 };
 
 export const showStats = async (req, res) => {
@@ -148,4 +173,16 @@ export const showStats = async (req, res) => {
         .reverse();
 
     res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
+};
+
+// UPDATE EVENT
+export const updateEvent = async (req, res) => {
+    const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(StatusCodes.OK).json({ msg: "Event updated.", event: updatedEvent });
+};
+
+// DELETE EVENT
+export const deleteEvent = async (req, res) => {
+    const removedEvent = await Event.findByIdAndDelete(req.params.id);
+    res.status(StatusCodes.OK).json({ msg: "Event deleted.", event: removedEvent });
 };

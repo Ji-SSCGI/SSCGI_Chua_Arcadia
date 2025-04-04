@@ -61,6 +61,17 @@ const Wrapper = styled.article`
     display: grid;
     align-items: center;
   }
+
+  .status-upcoming{
+    background: #e0e8f9;
+    color: #647acb;
+  }
+
+  .status-completed{
+    background: #ffeeee;
+    color: #d66a6a;
+  }
+
   .actions {
     margin-top: 1rem;
     display: flex;

@@ -17,29 +17,29 @@ const Event= ({
   createdAt,
   eventStatus,
 }) => {
-  const date = day(createdAt).format("MMM Do, YYYY");
+  const date = day(eventDate).format("MMM Do, YYYY");
 
   return (
     <Wrapper>
       <header>
         <div className="main-icon">{eventTitle.charAt(0)}</div>
         <div className="info">
-          <h5>{eventDescription}</h5>
-          <p>{eventDate}</p>
+          <h5>{eventTitle}</h5>
+          <p>{eventDescription}</p>
         </div>
       </header>
       <div className="content">
         <div className="content-center">
           <EventInfo icon={<FaCalendarAlt />} text={date} />
           <EventInfo icon={<FaBriefcase />} text={eventType} />
-          <div className={`status ${eventStatus.toLowerCase()}`}>{eventStatus}</div>
+          <div className={`status status-${eventStatus.toLowerCase()}`}>{eventStatus}</div>
         </div>
 
         <footer className="actions">
-          <Link to={`../edit-job/${_id}`} className="btn edit-btn">
+          <Link to={`../edit-event/${_id}`} className="btn edit-btn">
             Edit
           </Link>
-          <Form method="post" action={`../delete-job/${_id}`}>
+          <Form method="post" action={`../delete-event/${_id}`}>
             <button type="submit" className="btn delete-btn">
               Delete
             </button>

@@ -49,6 +49,12 @@ const Login = () => {
         <FormRow type="email" name="email" defaultValue="" />
         <FormRow type="password" name="password" defaultValue="" />
         <SubmitBtn />
+        <p>
+          Return
+          <Link to="/" className="member-btn">
+            Home
+          </Link>
+        </p>
       </Form>
     </Wrapper>
   );

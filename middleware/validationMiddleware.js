@@ -1,6 +1,7 @@
 import { body, param, validationResult } from "express-validator";
 import { BadRequestError, NotFoundError, UnauthorizedError } from "../errors/customErrors.js";
-import { EVENT_TYPE, JOB_STATUS, JOB_TYPE } from "../utils/constants.js";
+import { EVENT_TYPE } from "../utils/constants.js";
+import Event from "../models/EventModel.js";
 
 import mongoose from "mongoose";
 import User from "../models/UserModel.js";
@@ -100,10 +101,10 @@ export const validateIdParameters = withValidationErrors([
         if (!event) throw new NotFoundError(`No event with Id: ${value}`);
 
         // Check Role and Ownership
-        const isAdmin = req.user.role === "admin";
+        const isAdmin = req.user.role === "admin" || "superAdmin";
         const isOwner = req.user.userId === event.createdBy.toString();
 
-        if (!isAdmin || isOwner)
+        if (!isAdmin)
             throw new UnauthorizedError("Unauthorized access to this page.");
     }),
 ]);

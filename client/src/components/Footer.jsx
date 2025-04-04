@@ -15,7 +15,6 @@ const Footer = () => {
         <div className="footer-middle">
           <div className="footer-left">
             <h5>ARCADIA</h5>
-            <p>PARAGRAPH</p>
           </div>
           <div className="footer-center">
             <div>
@@ -28,6 +27,8 @@ const Footer = () => {
           <div className="footer-right">
             <h5>Contact Us</h5>
             <p>kimchen08@gmail.com</p>
+            <p>+63969 666 3435</p>
+            <p>www.arcadia.org</p>
           </div>
         </div>
 

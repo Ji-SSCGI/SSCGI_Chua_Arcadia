@@ -19,11 +19,6 @@ const Links = [
     icon: <FaWpforms />,
   },
   {
-    text: "Stats",
-    path: "stats",
-    icon: <IoBarChartSharp />,
-  },
-  {
     text: "Profile",
     path: "profile",
     icon: <ImProfile />,

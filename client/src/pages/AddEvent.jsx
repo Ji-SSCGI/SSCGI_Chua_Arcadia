@@ -10,17 +10,21 @@ import customFetch from "../utils/customFetch";
 // Action function to handle form submission and create a reservation
 export const action = async ({ request }) => {
   const formData = await request.formData();
-  const data = Object.fromEntries(formData);
 
+  const file = formData.get("eventImg");
+  if (file && file.size > 500000) {
+    toast.error("Image size too large.");
+    return null;
+  }
   try {
     // Send reservation data to backend
-    await customFetch.post("/events", data);
+    await customFetch.post("/events", formData);
     toast.success("Event added successfully.");
     return redirect("/dashboard/all-events"); // Redirect after successful reservation creation
   } catch (error) {
     toast.error(error?.response?.data?.msg);
-    return error;
   }
+  return null
 };
 
 const AddEvent = () => {
@@ -30,7 +34,7 @@ const AddEvent = () => {
 
   return (
     <Wrapper>
-      <Form method="post" className="form">
+      <Form method="post" encType="multipart/form-data" className="form">
         <h4 className="form-title">Add Event</h4>
         <div className="form-center">
           {/* Reference number will be auto-generated on the backend */}

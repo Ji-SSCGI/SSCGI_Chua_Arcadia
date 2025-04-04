@@ -1,6 +1,7 @@
 import React from "react";
 
 const PublicationsPage = () => {
+  
   return (
     <main>
       {/* Hero Section */}

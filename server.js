@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
 // API
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
-app.use("/api/v1/events", authenticateUser, eventRouter);
+app.use("/api/v1/events", eventRouter);
 
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));

@@ -30,7 +30,7 @@ section {
 --------------------------------------------------------------*/
 /* Custom Styles for Navbar */
 .navbar {
-  background-color: #f8f9fa; /* Light background color */
+  background-color: #00bfa6; /* Light background color */
   padding: 1rem 2rem;
   position: sticky;
   top: 0; /* Ensures it sticks to the top of the page */
@@ -388,8 +388,7 @@ section {
 /* About Section */
 .about-us {
   padding: 80px 20px;
-  //background-color: #e1ebf7;
-  background-color: #9ac53c;
+  background-color: #00bfa6;
   text-align: center;
   margin-bottom: 1rem;
 }

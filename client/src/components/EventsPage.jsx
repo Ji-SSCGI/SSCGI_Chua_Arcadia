@@ -1,6 +1,9 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
+import customFetch from "../utils/customFetch";
 
 function EventsPage() {
+
   return (
     <main>
       {/* Hero Section */}
@@ -92,7 +95,7 @@ function EventsPage() {
               <h4>DEEP DIVE DIALOGUES</h4>
               <p>Forums, Panel Dicussions, Fireside Chats, Summits</p>
               <button className="btn-primary">More</button>
-              <button className="btn-secondary">Learn</button>
+              <button className="btn-secondary">Register</button>
             </div>
             <div>
               <img
@@ -104,7 +107,7 @@ function EventsPage() {
               <h4>Hackathons & Campaign</h4>
               <p>Workshops and Hackathons</p>
               <button className="btn-primary">More</button>
-              <button className="btn-secondary">Learn</button>
+              <button className="btn-secondary">Register</button>
             </div>
             <div>
               <img
@@ -116,7 +119,7 @@ function EventsPage() {
               <h4>PLASTIC PATHWAYS</h4>
               <p>Leading the Way in Plastic Reuse and Reduction</p>
               <button className="btn-primary">More</button>
-              <button className="btn-secondary">Learn</button>
+              <button className="btn-secondary">Register</button>
             </div>
           </div>
         </div>
@@ -134,7 +137,6 @@ function EventsPage() {
               <h4>DEEP DIVE DIALOGUES</h4>
               <p>Forums, Panel Dicussions, Fireside Chats, Summits</p>
               <button className="btn-primary">More</button>
-              <button className="btn-secondary">Learn</button>
             </div>
             <div>
               <img
@@ -146,7 +148,6 @@ function EventsPage() {
               <h4>Hackathons & Campaign</h4>
               <p>Workshops and Hackathons</p>
               <button className="btn-primary">More</button>
-              <button className="btn-secondary">Learn</button>
             </div>
             <div>
               <img
@@ -158,7 +159,6 @@ function EventsPage() {
               <h4>PLASTIC PATHWAYS</h4>
               <p>Leading the Way in Plastic Reuse and Reduction</p>
               <button className="btn-primary">More</button>
-              <button className="btn-secondary">Learn</button>
             </div>
           </div>
         </div>
