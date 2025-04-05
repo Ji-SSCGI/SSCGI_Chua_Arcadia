@@ -28,7 +28,7 @@ import { action as editProfileAction } from "./pages/Profile";
 
 // Import Loader
 //import { loader as eventPageLoader } from "./components/EventsPage";
-
+import { loader as eventPageLoader } from "./components/EventsPage";
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
 import { loader as allEventsLoader } from "./pages/AllEvents";
 import { loader as editEventLoader } from "./pages/EditEvent";
@@ -69,6 +69,7 @@ const router = createBrowserRouter([
       {
         path: "events",
         element: <Events />,
+        loader: eventPageLoader,
       },
       {
         path: "publications",

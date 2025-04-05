@@ -14,7 +14,8 @@ import cookieParser from 'cookie-parser';
 // CUSTOM ROUTER IMPORT 
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
-import eventRouter from "./routes/eventRouter.js"
+import eventRouter from "./routes/eventRouter.js";
+import publicEventRouter from "./routes/publicEventRouter.js";
 
 // Middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
@@ -65,6 +66,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/events", authenticateUser, eventRouter);
+app.use("/api/v1/public-events", publicEventRouter);
 
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));

@@ -1,8 +1,36 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch";
+import { toast } from "react-toastify"; // Make sure you have toast notifications set up
+
+
+export const loader = async ({ request }) => {
+  try {
+    // Fetch the data from the API endpoint
+    const { data } = await customFetch.get(
+      "/public-events?eventStatus=Upcoming&eventStatus=Completed"
+    );
+
+    // Filter events based on eventStatus (Upcoming or Completed)
+    const upcomingEvents = data.events.filter(
+      (event) => event.eventStatus === "Upcoming"
+    );
+    const previousEvents = data.events.filter(
+      (event) => event.eventStatus === "Completed"
+    );
+
+    return {
+      upcomingEvents,
+      previousEvents,
+    };
+  } catch (error) {
+    toast.error(error.response?.data?.msg || "An error occurred.");
+    return { upcomingEvents: [], previousEvents: [] }; // Return empty arrays on error
+  }
+};
 
 function EventsPage() {
+  const { upcomingEvents, previousEvents } = useLoaderData();
 
   return (
     <main>
@@ -85,81 +113,39 @@ function EventsPage() {
         <h2>Upcoming Events</h2>
         <div className="feature-container">
           <div className="feature-content">
-            <div>
-              <img
-                className="f-img"
-                src="assets/img/features-1.jpg"
-                alt="Event 1"
-              />
-              <i className="bi bi-briefcase"></i>
-              <h4>DEEP DIVE DIALOGUES</h4>
-              <p>Forums, Panel Dicussions, Fireside Chats, Summits</p>
-              <button className="btn-primary">More</button>
-              <button className="btn-secondary">Register</button>
-            </div>
-            <div>
-              <img
-                className="f-img"
-                src="assets/img/features-2.jpg"
-                alt="Event 2"
-              />
-              <i className="bi bi-card-checklist"></i>
-              <h4>Hackathons & Campaign</h4>
-              <p>Workshops and Hackathons</p>
-              <button className="btn-primary">More</button>
-              <button className="btn-secondary">Register</button>
-            </div>
-            <div>
-              <img
-                className="f-img"
-                src="assets/img/features-3.jpg"
-                alt="Event 3"
-              />
-              <i className="bi bi-bar-chart"></i>
-              <h4>PLASTIC PATHWAYS</h4>
-              <p>Leading the Way in Plastic Reuse and Reduction</p>
-              <button className="btn-primary">More</button>
-              <button className="btn-secondary">Register</button>
-            </div>
+            {upcomingEvents.map((event, index) => (
+              <div key={event._id}>
+                <img
+                  className="f-img"
+                  src={event.eventImg}
+                  alt={event.eventTitle}
+                />
+                <i className="bi bi-briefcase"></i>
+                <h4>{event.eventTitle}</h4>
+                <p>{event.eventDescription}</p>
+                <button className="btn-primary">More</button>
+                <button className="btn-secondary">Register</button>
+              </div>
+            ))}
           </div>
         </div>
 
         <h2>Previous Events</h2>
         <div className="feature-container">
           <div className="feature-content">
-            <div>
-              <img
-                className="f-img"
-                src="assets/img/tabs-1.jpg"
-                alt="Event 1"
-              />
-              <i className="bi bi-briefcase"></i>
-              <h4>DEEP DIVE DIALOGUES</h4>
-              <p>Forums, Panel Dicussions, Fireside Chats, Summits</p>
-              <button className="btn-primary">More</button>
-            </div>
-            <div>
-              <img
-                className="f-img"
-                src="assets/img/tabs-2.jpg"
-                alt="Event 2"
-              />
-              <i className="bi bi-card-checklist"></i>
-              <h4>Hackathons & Campaign</h4>
-              <p>Workshops and Hackathons</p>
-              <button className="btn-primary">More</button>
-            </div>
-            <div>
-              <img
-                className="f-img"
-                src="assets/img/tabs-3.jpg"
-                alt="Event 3"
-              />
-              <i className="bi bi-bar-chart"></i>
-              <h4>PLASTIC PATHWAYS</h4>
-              <p>Leading the Way in Plastic Reuse and Reduction</p>
-              <button className="btn-primary">More</button>
-            </div>
+            {previousEvents.map((event, index) => (
+              <div key={event._id}>
+                <img
+                  className="f-img"
+                  src={event.eventImg}
+                  alt={event.eventTitle}
+                />
+                <i className="bi bi-card-checklist"></i>
+                <h4>{event.eventTitle}</h4>
+                <p>{event.eventDescription}</p>
+                <button className="btn-primary">More</button>
+              </div>
+            ))}
           </div>
         </div>
       </section>

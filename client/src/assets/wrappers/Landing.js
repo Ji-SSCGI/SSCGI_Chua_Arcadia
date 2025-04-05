@@ -554,6 +554,7 @@ section {
 .feature-content img {
   width: 100%;
   height: auto;
+  max-width: 20rem;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 20px;
