@@ -38,6 +38,9 @@ section {
   width: 100%; /* Ensure the navbar spans the full width */
 }
 
+.navbar .logo{
+  height: 3rem;
+}
 .navbar-brand {
   font-weight: bold;
   font-size: 1.5rem;
@@ -50,7 +53,7 @@ section {
 }
 
 .navbar-nav .nav-link:hover {
-  color: #00bfa6;
+  color: #ffffff;
   border-radius: 5px;
 }
 
@@ -551,10 +554,10 @@ section {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.feature-content img {
-  width: 100%;
+.feature-content .f-img {
+  width: 100%;  
   height: auto;
-  max-width: 20rem;
+  max-height: 20rem;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -595,6 +598,11 @@ section {
 .btn-secondary {
   background-color: #f1f1f1;
   color: #333;
+}
+
+.f-btn a {
+  text-decoration: none;
+  color: #00bfa6;
 }
 
 /* Adjustments for Smaller Screens */

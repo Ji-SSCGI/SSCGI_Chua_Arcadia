@@ -11,6 +11,11 @@ const EventSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    registrationURL: {
+        type: String,
+        default: "",
+        required: true,
+    },
     eventType: {
         type: String,
         enum: Object.values(EVENT_TYPE),

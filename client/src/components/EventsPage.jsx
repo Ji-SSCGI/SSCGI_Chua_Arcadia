@@ -1,8 +1,7 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify"; // Make sure you have toast notifications set up
-
 
 export const loader = async ({ request }) => {
   try {
@@ -113,8 +112,8 @@ function EventsPage() {
         <h2>Upcoming Events</h2>
         <div className="feature-container">
           <div className="feature-content">
-            {upcomingEvents.map((event, index) => (
-              <div key={event._id}>
+            {upcomingEvents.map((event) => (
+              <div className="f-img-container" key={event._id}>
                 <img
                   className="f-img"
                   src={event.eventImg}
@@ -123,8 +122,11 @@ function EventsPage() {
                 <i className="bi bi-briefcase"></i>
                 <h4>{event.eventTitle}</h4>
                 <p>{event.eventDescription}</p>
-                <button className="btn-primary">More</button>
-                <button className="btn-secondary">Register</button>
+                <button className="btn-primary f-btn">
+                  More</button>
+                <button className="btn-secondary f-btn">
+                  <a href={event.registrationURL}>Register</a>
+                </button>
               </div>
             ))}
           </div>
@@ -133,8 +135,8 @@ function EventsPage() {
         <h2>Previous Events</h2>
         <div className="feature-container">
           <div className="feature-content">
-            {previousEvents.map((event, index) => (
-              <div key={event._id}>
+            {previousEvents.map((event) => (
+              <div className="f-img-container" key={event._id}>
                 <img
                   className="f-img"
                   src={event.eventImg}
@@ -143,7 +145,7 @@ function EventsPage() {
                 <i className="bi bi-card-checklist"></i>
                 <h4>{event.eventTitle}</h4>
                 <p>{event.eventDescription}</p>
-                <button className="btn-primary">More</button>
+                <button className="btn-primary f-btn">More</button>
               </div>
             ))}
           </div>

@@ -14,7 +14,7 @@ export const createEvent = async (req, res) => {
 
 export const createEvent = async (req, res) => {
     try {
-      const { eventTitle, eventDescription, eventType, eventDate } = req.body;
+      const { eventTitle, eventDescription, registrationURL, eventType, eventDate } = req.body;
       let eventImgUrl = "";
       let eventImgPublicId = "";
   
@@ -38,6 +38,7 @@ export const createEvent = async (req, res) => {
       const newEvent = new Event({
         eventTitle,
         eventDescription,
+        registrationURL,
         eventType,
         eventDate,
         eventImg: eventImgUrl, // Store the image URL

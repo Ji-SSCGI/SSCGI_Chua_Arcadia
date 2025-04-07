@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "./Logo";
+import HeroLogo from "./HeroLogo";
 
 function HomeNavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +11,7 @@ function HomeNavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
+        <HeroLogo />
         <a className="navbar-brand" href="#">
           Arcadia
         </a>

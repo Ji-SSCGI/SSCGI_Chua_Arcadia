@@ -18,13 +18,14 @@ export const action = async ({ request }) => {
   }
   try {
     // Send reservation data to backend
-    await customFetch.post("/events", formData);
+    const data = await customFetch.post("/events", formData);
+    console.log(data);
     toast.success("Event added successfully.");
     return redirect("/dashboard/all-events"); // Redirect after successful reservation creation
   } catch (error) {
     toast.error(error?.response?.data?.msg);
   }
-  return null
+  return null;
 };
 
 const AddEvent = () => {
@@ -60,6 +61,12 @@ const AddEvent = () => {
             type="text"
             name="eventDescription"
             labelText="Event Description"
+            required
+          />
+          <FormRow
+            type="text"
+            name="registrationURL"
+            labelText="Registration URL"
             required
           />
           <FormRowSelect
