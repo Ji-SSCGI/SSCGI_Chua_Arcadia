@@ -1,14 +1,15 @@
 import React from "react";
+import BGImage from "../assets/images/hero3-bg.png"
 
 const PublicationsPage = () => {
   
   return (
     <main>
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero hero-2"  >
         <div className="container text-center">
           <div className="hero-content">
-            <h2>Your Knowledge Hub for Waste Management</h2>
+            <h2></h2>
           </div>
         </div>
       </section>

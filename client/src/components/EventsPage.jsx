@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify"; // Make sure you have toast notifications set up
+import BGImage from "../assets/images/hero2-bg.png"
 
 export const loader = async ({ request }) => {
   try {
@@ -34,11 +35,14 @@ function EventsPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero bg-img" style={{ 
+          backgroundImage: `url(${BGImage})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat' 
+        }}>
         <div className="container text-center">
           <div className="hero-content">
             <h2>
-              Foster discourse and drive actionable sustainability solutions
             </h2>
           </div>
         </div>
@@ -50,8 +54,6 @@ function EventsPage() {
           <div className="collab-content collab-space">
             <div
               className="collab-text"
-              data-aos="fade-up"
-              data-aos-delay="100"
             >
               <h3>DEEP DIVE DIALOGUES</h3>
               <p>
@@ -66,8 +68,6 @@ function EventsPage() {
             </div>
             <div
               className="collab-images"
-              data-aos="fade-up"
-              data-aos-delay="200"
             >
               <div className="collab-image-grid">
                 <img src="assets/img/clients/client-1.png" alt="Event 1" />
@@ -78,8 +78,6 @@ function EventsPage() {
           <div className="collab-content-r collab-space">
             <div
               className="collab-text"
-              data-aos="fade-up"
-              data-aos-delay="100"
             >
               <h3>HACKATHON AND CAMPAIGNS</h3>
               <p>
@@ -96,8 +94,6 @@ function EventsPage() {
             </div>
             <div
               className="collab-images"
-              data-aos="fade-up"
-              data-aos-delay="200"
             >
               <div className="collab-image-grid">
                 <img src="assets/img/clients/client-2.png" alt="Event 2    " />
@@ -125,7 +121,7 @@ function EventsPage() {
                 <button className="btn-primary f-btn">
                   More</button>
                 <button className="btn-secondary f-btn">
-                  <a href={event.registrationURL}>Register</a>
+                  <a href={event.registrationURL} target="_blank">Register</a>
                 </button>
               </div>
             ))}

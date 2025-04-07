@@ -26,6 +26,7 @@ const LandingMain = () => {
         "Description of the focus area. This provides a brief overview of the goal or target.",
     },
   ];
+
   return (
     <main>
       {/* Hero Section */}
@@ -102,40 +103,49 @@ const LandingMain = () => {
         <div className="feature-container">
           <div className="services-grid">
             <div className="service-item">
-              <i className="bi bi-briefcase"></i>
+              <img
+                className="c-img"
+                src="https://ikozmik.com/Content/Images/uploaded/its-free-featured.jpg"
+                alt="key-component1"
+                srcset=""
+              />
               <h4>Events</h4>
-              <div className="service-content">
-                <p>
-                  Arcadia serves as a platform that brings together youth,
-                  businesses, researchers, governments, and industry experts
-                  through forums, summits, workshops, and hackathons.
-                </p>
-                <button className="btn-primary">Learn More</button>
-              </div>
+              <p>
+                Arcadia serves as a platform that brings together youth,
+                businesses, researchers, governments, and industry experts
+                through forums, summits, workshops, and hackathons.
+              </p>
+              <button className="btn-primary">Learn More</button>
             </div>
             <div className="service-item">
-              <i className="bi bi-card-checklist"></i>
+              <img
+                className="c-img"
+                src="https://images.ctfassets.net/hrltx12pl8hq/4f6DfV5DbqaQUSw0uo0mWi/6fbcf889bdef65c5b92ffee86b13fc44/shutterstock_376532611.jpg?fit=fill&w=600&h=400"
+                alt="key-component1"
+                srcset=""
+              />
               <h4>Knowledge Portal</h4>
-              <div className="service-content">
-                <p>
-                  Arcadia serves as a centralized resource for cutting-edge
-                  research, actionable insights, and real-world case studies
-                  that drive the transition to a circular economy.
-                </p>
-                <button className="btn-primary">Learn More</button>
-              </div>
+              <p>
+                Arcadia serves as a centralized resource for cutting-edge
+                research, actionable insights, and real-world case studies that
+                drive the transition to a circular economy.
+              </p>
+              <button className="btn-primary">Learn More</button>
             </div>
             <div className="service-item">
-              <i className="bi bi-bar-chart"></i>
+              <img
+                className="c-img"
+                src="https://buffer.com/resources/content/images/2024/11/free-stock-image-sites.png"
+                alt="key-component1"
+                srcset=""
+              />
               <h4>Innovation and Solution Exchange</h4>
-              <div className="service-content">
-                <p>
-                  Arcadia networks with forward-thinking companies to showcase
-                  cutting-edge solutions and technologies that accelerate the
-                  transition to a circular economy.
-                </p>
-                <button className="btn-primary">Learn More</button>
-              </div>
+              <p>
+                Arcadia networks with forward-thinking companies to showcase
+                cutting-edge solutions and technologies that accelerate the
+                transition to a circular economy.
+              </p>
+              <button className="btn-primary">Learn More</button>
             </div>
           </div>
         </div>
@@ -150,19 +160,54 @@ const LandingMain = () => {
       </section>
 
       {/* About Us Section*/}
-      <section className="about-us">
-        <div className="about-container">
-          <h3 className="about-main-text">About Arcadia</h3>
-          <p className="about-info">
-            <span>Arcadia</span> is a sustainability hub for companies committed
-            to advancing sustainability practices and accelerating the
-            transition to a circular economy.
-          </p>
-          <p className="about-info">
-            As a hub, it facilitates the exchange of leading sustainability
-            practices and resources, fostering the development of cost-
-            effective and efficient solutions to sustainability challenges.
-          </p>
+      {/* Contact Us Section */}
+      <section className="contact-us">
+      <h2 className=" ">Contact Us</h2>
+        <div className="contact-container">
+          <h4>Additional questions?</h4>
+          <h5>Please submit your question here and we will respond as quickly as possible.</h5>
+          <form className="contact-form">
+            <label>
+              Topic:
+              <select name="topic" required>
+                <option value="">Select a topic</option>
+                <option value="careers">Careers</option>
+                <option value="services">Services</option>
+                <option value="press">Press/Media Relations</option>
+                <option value="feedback">Feedback</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
+            <label>
+              Name:
+              <input type="text" name="name" required />
+            </label>
+
+            <label>
+              Email:
+              <input type="email" name="email" required />
+            </label>
+
+            <label>
+              Company:
+              <input type="text" name="company" />
+            </label>
+
+            <label>
+              Location:
+              <input type="text" name="location" />
+            </label>
+
+            <label>
+              Message:
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            
+            <button type="submit" className="btn-primary">
+              Submit
+            </button>
+          </form>
         </div>
       </section>
     </main>

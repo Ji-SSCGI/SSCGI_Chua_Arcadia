@@ -76,6 +76,13 @@ const AddEvent = () => {
             list={Object.values(EVENT_TYPE)}
             required
           />
+          <FormRowSelect
+            labelText="Event Status"
+            name="eventStatus"
+            defaultValue={EVENT_STATUS.UPCOMING}
+            list={Object.values(EVENT_STATUS)}
+            required
+          />
           <FormRow
             type="date"
             name="eventDate"

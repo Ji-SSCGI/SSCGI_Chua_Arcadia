@@ -43,7 +43,7 @@ export const action = async ({ request, params }) => {
 
 // EditEvent Component
 const EditEvent = () => {
-  const { event } = useLoaderData(); // Destructure the event from loader data
+  const { event } = useLoaderData();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "Submitting";
 
@@ -56,30 +56,30 @@ const EditEvent = () => {
           <FormRow
             type="text"
             name="eventTitle"
-            defaultValue={event.event.eventTitle} // Set default value from event data
+            defaultValue={event.event.eventTitle} 
           />
           <FormRow
             type="text"
             name="eventDescription"
-            defaultValue={event.event.eventDescription} // Set default value from event data
+            defaultValue={event.event.eventDescription} 
           />
           <FormRow
             type="text"
             name="registrationURL"
-            defaultValue=""
+            defaultValue={event.event.registrationURL}
           />
           <FormRowSelect
             name="eventStatus"
             labelText="Event Status"
             className="eventStatus"
-            defaultValue={event.event.eventStatus} // Set default value from event data
-            list={Object.values(EVENT_STATUS)} // List of statuses
+            defaultValue={event.event.eventStatus}
+            list={Object.values(EVENT_STATUS)}
           />
           <FormRowSelect
             name="eventType"
             labelText="Event Type"
-            defaultValue={event.event.eventType} // Set default value from event data
-            list={Object.values(EVENT_TYPE)} // List of types
+            defaultValue={event.event.eventType} 
+            list={Object.values(EVENT_TYPE)} 
           />
           <button
             type="submit"

@@ -52,9 +52,7 @@ export const RESERVATION_SORT_BY = {
 
 export const EVENT_STATUS = {
     UPCOMING: "Upcoming",
-    ONGOING: "Ongoing",
-    COMPLETED: "Completed",
-    CANCELLED: "Cancelled"
+    COMPLETED: "Completed"
 };
 
 export const EVENT_TYPE = {

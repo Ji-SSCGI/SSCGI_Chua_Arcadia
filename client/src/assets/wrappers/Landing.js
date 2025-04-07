@@ -74,14 +74,9 @@ section {
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  height: 100vh; /* Full viewport height */
-  display: flex;
-  justify-content: center; /* Center the content horizontally */
   align-items: center; /* Center the content vertically */
   position: relative;
   overflow: hidden;
-  text-align: center;
-  color: #fff; /* White text color */
 }
 
 /* Hero Image */
@@ -94,13 +89,20 @@ section {
   padding: 0 20px;
   margin-bottom: 1rem;
   overflow: hidden; /* Prevent overflow if content grows too large */
+  color: #fff; /* White text color */
 }
 
 .hero-container {
   display: flex;
   flex-direction: column;
   align-items: center; /* Ensures content is aligned in the center */
+  justify-content: center;
   background-color: #00bfa6;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
 }
 
 .hero-content h1 {
@@ -148,11 +150,27 @@ section {
 
 /* Responsive Styling for Small Screens */
 @media (max-width: 768px) {
-  .hero-image {
-    //display: none; /* Hide the image on smaller screens */
+  .hero {
+    height: 50vh;
+  }
+
+  .hero-2,
+  .hero-3 {
+    display: none;
+  }
+
+  .hero-container {
+    margin-top: 2.4rem;
+  }
+
+  .hero .logo{
+    width: 100vw;
+  }
+
+  .bg-img{
+    display: none;
   }
 }
-
 /* Network Container Layout */
 .network {
   //background-color: #e1ebf7;
@@ -229,6 +247,9 @@ section {
 
 .feature-container {
   padding: 3rem;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .services-grid {
@@ -271,6 +292,10 @@ section {
   margin-bottom: 20px;
 }
 
+.featured-services .c-img{
+  width: auto;
+  height: 25rem;
+}
 .btn-primary {
   padding: 10px 20px;
   background-color: #00bfa6;
@@ -289,7 +314,11 @@ section {
 /* Responsive */
 @media (max-width: 768px) {
   .services-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    grid-template-columns: 1fr; /* 2 columns on medium screens */
+  }
+
+  .service-item {
+    justify-content: center;
   }
 }
 
@@ -755,6 +784,67 @@ section {
   cursor: pointer;
 }
 
+
+// Contact Us
+.contact-us {
+  margin-bottom: 1rem;
+  padding: 2rem;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.contact-form {
+  width: 50%;
+}
+
+.contact-main-text {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.btn-primary {
+  background-color: #2e8b57;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .contact-form{
+    width: 100%;
+  }
+}
+
 /* Footer */
 .footer {
   background-color: #f8f9fa;
@@ -766,14 +856,14 @@ section {
 
 /* Top Section */
 .footer-top {
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 5rem;
 }
 
 .footer-top h4 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 5px;
+  color: #00bfa6;
 }
 
 .footer-top p {
@@ -838,15 +928,12 @@ section {
   border-top: 1px solid #dee2e6;
   padding-top: 10px;
   margin-top: 20px;
-}
+} 
 
-.footer-logo .logo{
-  height: 2rem;
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 5px;
+.footer-bottom .logo {
+  height: 3rem;
+  width: auto;
 }
-
 .footer-bottom p {
   font-size: 14px;
   color: #6c757d;
@@ -899,6 +986,10 @@ section {
 
   .footer-bottom p {
     font-size: 11px;
+  }
+
+  .footer-logo .logo {
+    width: 10rem;
   }
 }
 
