@@ -8,9 +8,11 @@ export { default as HomeNavBar } from './HomeNavBar';
 export { default as LandingMain } from './LandingMain';
 export { default as EventsPage } from './EventsPage';
 export { default as PublicationsPage } from './PublicationsPage';
+export { default as InitiativesPage } from "./InitiativesPage"
 export { default as Footer } from './Footer';
 export { default as Carousel } from './Carousel';
-
+export { default as EventCarousel } from "./EventCarousel"
+export { default as ConfirmationModal } from "./ConfirmationModal"
 // Admin
 export { default as FormRow } from './FormRow';
 export { default as Navbar } from './Navbar';
@@ -25,3 +27,5 @@ export { default as PageBtnContainer } from './PageBtnContainer';
 export { default as Loading } from './Loading';
 export { default as EventsContainer } from './EventsContainer';
 export { default as SearchContainer } from './SearchContainer';
+export { default as UsersContainer } from './UsersContainer';
+export { default as PartnersContainer } from './PartnersContainer';

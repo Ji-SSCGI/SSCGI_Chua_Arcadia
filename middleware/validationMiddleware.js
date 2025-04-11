@@ -106,6 +106,14 @@ export const validateEventInput = withValidationErrors([
     .withMessage("Event date is required."),
 ]);
 
+// VALIDATE PARTNER INPUT
+export const validatePartnerInput = withValidationErrors([
+  body("partnerName").notEmpty().withMessage("Partner name is required."),
+  body("partnerDescription")
+    .notEmpty()
+    .withMessage("Partner description is required."),
+]);
+
 // VALIDATE PARAMETERS
 export const validateIdParameters = withValidationErrors([
   param("id").custom(async (value, { req }) => {
@@ -117,6 +125,22 @@ export const validateIdParameters = withValidationErrors([
     // Check Role and Ownership
     const isAdmin = req.user.role === "admin" || "superAdmin";
     const isOwner = req.user.userId === event.createdBy.toString();
+
+    if (!isAdmin)
+      throw new UnauthorizedError("Unauthorized access to this page.");
+  }),
+]);
+
+// VALIDATE PARAMETERS
+export const validateUserIdParameters = withValidationErrors([
+  param("id").custom(async (value, { req }) => {
+    const isValidMongoId = mongoose.Types.ObjectId.isValid(value);
+    if (!isValidMongoId) throw new BadRequestError("Invalid MongoDB Id.");
+    const user = await User.findById(value);
+    if (!user) throw new NotFoundError(`No user with Id: ${value}`);
+
+    // Check Role and Ownership
+    const isAdmin = req.user.role === "superAdmin";
 
     if (!isAdmin)
       throw new UnauthorizedError("Unauthorized access to this page.");

@@ -1,27 +1,23 @@
 import React from "react";
-
-import { IoBarChartSharp } from "react-icons/io5";
-import { MdQueryStats } from "react-icons/md";
-import { FaWpforms } from "react-icons/fa";
-import { ImProfile } from "react-icons/im";
-import { MdAdminPanelSettings } from "react-icons/md";
-import { MdPeople } from "react-icons/md";
+import { FaUserCircle, FaUsers, FaUserPlus, FaHandshake } from "react-icons/fa";
+import { MdAdminPanelSettings, MdHandshake } from "react-icons/md";
+import { MdEventAvailable, MdEventNote } from "react-icons/md";
 
 const Links = [
   {
     text: "Add Event",
     path: ".",
-    icon: <FaWpforms />,
+    icon: <MdEventAvailable />,
   },
   {
     text: "All Events",
     path: "all-events",
-    icon: <FaWpforms />,
+    icon: <MdEventNote />,
   },
   {
     text: "Profile",
     path: "profile",
-    icon: <ImProfile />,
+    icon: <FaUserCircle />,
   },
   {
     text: "Admin",
@@ -29,9 +25,24 @@ const Links = [
     icon: <MdAdminPanelSettings />,
   },
   {
+    text: "All Users",
+    path: "all-users",
+    icon: <FaUsers />,
+  },
+  {
     text: "Create Account",
     path: "create-account",
-    icon: <MdPeople />,
+    icon: <FaUserPlus />,
+  },
+  {
+    text: "Add Partner",
+    path: "add-partner",
+    icon: <FaHandshake />,
+  },
+  {
+    text: "All Partners",
+    path: "all-partners",
+    icon: <MdHandshake />,
   },
 ];  
 

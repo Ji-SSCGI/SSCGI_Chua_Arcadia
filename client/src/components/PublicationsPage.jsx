@@ -41,7 +41,7 @@ const PublicationsPage = () => {
               data-aos-delay="200"
             >
               <div className="collab-image-grid">
-                <img src="assets/img/clients/client-4.png" alt="Event 1" />
+                <img src="assets/img/clients/Plan.webp" alt="Event 1" />
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@ const PublicationsPage = () => {
               data-aos-delay="200"
             >
               <div className="collab-image-grid">
-                <img src="assets/img/clients/client-5.png" alt="Event 2    " />
+                <img src="assets/img/clients/Knowledge.webp" alt="Event 2    " />
               </div>
             </div>
           </div>
@@ -101,7 +101,7 @@ const PublicationsPage = () => {
               data-aos-delay="200"
             >
               <div className="collab-image-grid">
-                <img src="assets/img/clients/client-6.png" alt="Event 1" />
+                <img src="assets/img/clients/Case.webp" alt="Event 3" />
               </div>
             </div>
           </div>
@@ -116,10 +116,9 @@ const PublicationsPage = () => {
             <div>
               <img
                 className="f-img"
-                src="assets/img/testimonials/testimonials-1.jpg"
+                src="assets/img/testimonials/User4.jpg"
                 alt="Event 1"
               />
-              <i className="bi bi-briefcase"></i>
               <h4>From compliance to circularity</h4>
               <p>Bridging the Gap with EPR for Retail Plastics</p>
               <button className="btn-primary">Learn</button>
@@ -127,10 +126,9 @@ const PublicationsPage = () => {
             <div>
               <img
                 className="f-img"
-                src="assets/img/testimonials/testimonials-2.jpg"
+                src="assets/img/testimonials/User5.jpg"
                 alt="Event 2"
               />
-              <i className="bi bi-card-checklist"></i>
               <h4>From compliance to circularity</h4>
               <p>Bridging the Gap with EPR for Retail Plastics</p>
               <button className="btn-primary">Learn</button>
@@ -138,10 +136,9 @@ const PublicationsPage = () => {
             <div>
               <img
                 className="f-img"
-                src="assets/img/testimonials/testimonials-3.jpg"
+                src="assets/img/testimonials/User6.jpg"
                 alt="Event 3"
               />
-              <i className="bi bi-bar-chart"></i>
               <h4>From compliance to circularity</h4>
               <p>Bridging the Gap with EPR for Retail Plastics</p>
               <button className="btn-primary">Learn</button>
@@ -158,33 +155,30 @@ const PublicationsPage = () => {
             <div>
               <img
                 className="f-img"
-                src="assets/img/about-company-3.jpg"
+                src="assets/img/clients/Waste.avif"
                 alt="Event 1"
               />
-              <i className="bi bi-briefcase"></i>
-              <h4>From compliance to circularity</h4>
+              <h4>Make love not plastic waste</h4>
               <p>Bridging the Gap with EPR for Retail Plastics</p>
               <button className="btn-primary">Learn</button>
             </div>
             <div>
               <img
                 className="f-img"
-                src="assets/img/about-company-2.jpg"
+                src="assets/img/clients/Waste2.avif"
                 alt="Event 2"
               />
-              <i className="bi bi-card-checklist"></i>
-              <h4>rom compliance to circularity</h4>
+              <h4>Reduce Reuse Recycle</h4>
               <p>Bridging the Gap with EPR for Retail Plastics</p>
               <button className="btn-primary">Learn</button>
             </div>
             <div>
               <img
                 className="f-img"
-                src="assets/img/about-company-3.jpg"
+                src="assets/img/clients/Waste3.avif"
                 alt="Event 3"
               />
-              <i className="bi bi-bar-chart"></i>
-              <h4>From compliance to circularity</h4>
+              <h4>Heal The World</h4>
               <p>Bridging the Gap with EPR for Retail Plastics</p>
               <button className="btn-primary">Learn</button>
             </div>

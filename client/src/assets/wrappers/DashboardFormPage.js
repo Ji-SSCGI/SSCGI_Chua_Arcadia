@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
   border-radius: var(--border-radius);
   width: 100%;
-  background: var(--background-secondary-color);
   color: var(--secondary-color);
   padding: 3rem 2rem 4rem;
   .form-title {
@@ -24,13 +23,28 @@ const Wrapper = styled.section`
     display: grid;
     row-gap: 1rem;
   }
+
+  .form-input {
+    height: 2.5rem;
+  }
+
   .form-btn {
-    background-color: #00bfa6;
+    background-color: #096026;
     align-self: end;
     margin-top: 1rem;
     display: grid;
     place-items: center;
+    color: #ffffff; 
   }
+
+  .form-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
 
   @media (min-width: 992px) {
     .form-center {

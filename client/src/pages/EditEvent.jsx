@@ -18,6 +18,7 @@ export const loader = async ({ params }) => {
     // Make sure you're hitting the correct endpoint
     const { data } = await customFetch.get(`/events/${params.id}`);
 
+    console.log(data);
     // Return the event data, it will be accessible in the EditEvent component
     return { event: data }; // Wrap the event data in an object
   } catch (error) {
@@ -27,10 +28,9 @@ export const loader = async ({ params }) => {
 };
 
 // Action for updating the event
-export const action = async ({ request, params }) => {
+export const action = async ({ request}) => {
   const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-
+  
   try {
     await customFetch.patch(`/events/${params.id}`, data); // Send updated data to API
     toast.success("Event updated successfully");

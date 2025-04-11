@@ -1,29 +1,47 @@
-import React from "react";
+import {React, useState} from "react";
 import HeroLogo from "./HeroLogo";
 import Carousel from "./Carousel";
+import customFetch from "../utils/customFetch";
+import { Form } from "react-router-dom";
+
+export const action = async ({request}) => {
+
+  const formData = await request.formData(); // Grabs all form fields
+
+  try {
+    // Send contact form data to the backend
+    const data = await customFetch.post("/contacts", formData);
+    console.log(data);
+    
+    toast.success("Message sent successfully!");
+    return redirect("/"); 
+  } catch (error) {
+    toast.error(error?.response?.data?.msg || "Something went wrong.");
+  }
+};
 
 const LandingMain = () => {
+
   const carouselItems = [
     {
-      image: "assets/img/clients/client-6.png",
+      image: "assets/img/clients/HN.png",
       title: "PLASTIC PATHWAYS",
       description: "Leading the Way in Plastic Reuse & Reduction",
     },
     {
-      image: "assets/img/clients/client-4.png",
+      image: "assets/img/clients/CN.png",
       title: "TECHCYCLE",
       description: "Closing the Loop on E-Waste",
     },
     {
-      image: "assets/img/clients/client-3.png",
+      image: "assets/img/clients/HN.png",
       title: "FOOD FORWARD",
       description: "From Food Waste to Resource",
     },
     {
-      image: "assets/img/clients/client-2.png",
-      title: "Focus Area 4",
-      description:
-        "Description of the focus area. This provides a brief overview of the goal or target.",
+      image: "assets/img/clients/CN.png",
+      title: "SUSTAINABILITY",
+      description: "Sustainable Cities.",
     },
   ];
 
@@ -40,6 +58,10 @@ const LandingMain = () => {
             <p>
               Driving Progress Towards a <span>Circular Economy</span>
             </p>
+            <a href="#join-us" className="cta-button">
+              Join Us
+            </a>{" "}
+            {/* Call-to-action button */}
           </div>
         </div>
       </section>
@@ -65,32 +87,32 @@ const LandingMain = () => {
           <div className="image-grid">
             <img
               className="image-item img"
-              src="assets/img/clients/client-1.png"
+              src="assets/img/clients/ES.png"
               alt="Client 1"
             />
             <img
               className="image-item img"
-              src="assets/img/clients/client-2.png"
+              src="assets/img/clients/NHS.png"
               alt="Client 2"
             />
             <img
               className="image-item img"
-              src="assets/img/clients/client-3.png"
+              src="assets/img/clients/CN.png"
               alt="Client 3"
             />
             <img
               className="image-item img"
-              src="assets/img/clients/client-4.png"
+              src="assets/img/clients/NM.png"
               alt="Client 4"
             />
             <img
               className="image-item img"
-              src="assets/img/clients/client-5.png"
+              src="assets/img/clients/BFN.png"
               alt="Client 4"
             />
             <img
               className="image-item img"
-              src="assets/img/clients/client-6.png"
+              src="assets/img/clients/HN.png"
               alt="Client 6"
             />
           </div>
@@ -105,7 +127,7 @@ const LandingMain = () => {
             <div className="service-item">
               <img
                 className="c-img"
-                src="https://ikozmik.com/Content/Images/uploaded/its-free-featured.jpg"
+                src="assets/img/clients/Case.webp"
                 alt="key-component1"
                 srcset=""
               />
@@ -115,12 +137,17 @@ const LandingMain = () => {
                 businesses, researchers, governments, and industry experts
                 through forums, summits, workshops, and hackathons.
               </p>
-              <button className="btn-primary">Learn More</button>
+              <button className="btn-primary">
+                <a className="btn-event" href="/events">
+                  Check our Events
+                </a>
+              </button>
+              <button className="btn-secondary">Read More</button>
             </div>
             <div className="service-item">
               <img
                 className="c-img"
-                src="https://images.ctfassets.net/hrltx12pl8hq/4f6DfV5DbqaQUSw0uo0mWi/6fbcf889bdef65c5b92ffee86b13fc44/shutterstock_376532611.jpg?fit=fill&w=600&h=400"
+                src="assets/img/clients/Knowledge.webp"
                 alt="key-component1"
                 srcset=""
               />
@@ -130,12 +157,17 @@ const LandingMain = () => {
                 research, actionable insights, and real-world case studies that
                 drive the transition to a circular economy.
               </p>
-              <button className="btn-primary">Learn More</button>
+              <button className="btn-primary">
+                <a className="btn-event" href="/events">
+                  Check our Events
+                </a>
+              </button>
+              <button className="btn-secondary">Read More</button>
             </div>
             <div className="service-item">
               <img
                 className="c-img"
-                src="https://buffer.com/resources/content/images/2024/11/free-stock-image-sites.png"
+                src="assets/img/clients/Plan.webp"
                 alt="key-component1"
                 srcset=""
               />
@@ -145,7 +177,12 @@ const LandingMain = () => {
                 cutting-edge solutions and technologies that accelerate the
                 transition to a circular economy.
               </p>
-              <button className="btn-primary">Learn More</button>
+              <button className="btn-primary">
+                <a className="btn-event" href="/events">
+                  Check our Events
+                </a>
+              </button>
+              <button className="btn-secondary">Read More</button>
             </div>
           </div>
         </div>
@@ -153,20 +190,22 @@ const LandingMain = () => {
 
       {/* Focus Section with Carousel */}
       <section className="focus">
-        <h2>Our Focus in the Philippines Context</h2>
+        <h2>Our Focus in the Philippines</h2>
         <div className="focus-container">
           <Carousel items={carouselItems} />
         </div>
       </section>
 
-      {/* About Us Section*/}
       {/* Contact Us Section */}
       <section className="contact-us">
-      <h2 className=" ">Contact Us</h2>
+        <h2 className=" ">Contact Us</h2>
         <div className="contact-container">
           <h4>Additional questions?</h4>
-          <h5>Please submit your question here and we will respond as quickly as possible.</h5>
-          <form className="contact-form">
+          <h5>
+            Please submit your question here and we will respond as quickly as
+            possible.
+          </h5>
+          <Form method="post" className="contact-form" >
             <label>
               Topic:
               <select name="topic" required>
@@ -201,13 +240,13 @@ const LandingMain = () => {
 
             <label>
               Message:
-              <textarea name="message" rows="5" required></textarea>
+              <textarea name="message" rows="5" required ></textarea>
             </label>
-            
+
             <button type="submit" className="btn-primary">
               Submit
             </button>
-          </form>
+          </Form>
         </div>
       </section>
     </main>

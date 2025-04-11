@@ -22,7 +22,7 @@ const Event= ({
   return (
     <Wrapper>
       <header>
-        <div className="main-icon">{eventTitle.charAt(0)}</div>
+        <div className="main-icons">{eventTitle.charAt(0)}</div>
         <div className="info">
           <h5>{eventTitle}</h5>
           <p>{eventDescription}</p>

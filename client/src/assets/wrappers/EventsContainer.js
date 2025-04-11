@@ -9,6 +9,16 @@ const Wrapper = styled.section`
     font-weight: 700;
     margin-bottom: 1.5rem;
   }
+
+  .events{
+    text-transform: none;
+    font-weight: bold;
+  }
+
+  .users {
+    text-transform: none;
+  }
+
   .jobs {
     display: grid;
     grid-template-columns: 1fr;

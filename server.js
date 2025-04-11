@@ -16,6 +16,10 @@ import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
 import eventRouter from "./routes/eventRouter.js";
 import publicEventRouter from "./routes/publicEventRouter.js";
+import partnerRouter from "./routes/partnerRouter.js";
+import publicPartnerRouter from "./routes/publicPartnerRouter.js";
+import contactRouter from "./routes/contactRouter.js"
+
 
 // Middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
@@ -67,6 +71,9 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/events", authenticateUser, eventRouter);
 app.use("/api/v1/public-events", publicEventRouter);
+app.use("/api/v1/partners", authenticateUser, partnerRouter);
+app.use("/api/v1/public-partners", publicPartnerRouter);
+app.use("/api/v1/contacts", contactRouter);
 
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));

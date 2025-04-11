@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 0 0.5rem;
-     background-color: #00bfa6;
+     background-color: #096026;
   }
   .img {
     width: 25px;
@@ -24,7 +24,7 @@ const Wrapper = styled.div`
     visibility: hidden;
     border-radius: var(--border-radius);
     background: var(--primary-500);
-    background-color: #00bfa6;
+    background-color: #096026;
   }
   .show-dropdown {
     visibility: visible;
@@ -34,7 +34,7 @@ const Wrapper = styled.div`
     padding: 0.5rem;
     background: transparent;
     border-color: transparent;
-    color: var(--white);
+    color: #ffffff;
     letter-spacing: var(--letter-spacing);
     text-transform: capitalize;
     cursor: pointer;

@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch";
-import { toast } from "react-toastify"; // Make sure you have toast notifications set up
+import { toast } from "react-toastify"; 
 import BGImage from "../assets/images/hero2-bg.png"
+import EventCarousel from "./EventCarousel";
 
 export const loader = async ({ request }) => {
   try {
@@ -70,7 +71,7 @@ function EventsPage() {
               className="collab-images"
             >
               <div className="collab-image-grid">
-                <img src="assets/img/clients/client-1.png" alt="Event 1" />
+                <img src="assets/img/clients/Knowledge.webp" alt="Event 1" />
               </div>
             </div>
           </div>
@@ -96,55 +97,26 @@ function EventsPage() {
               className="collab-images"
             >
               <div className="collab-image-grid">
-                <img src="assets/img/clients/client-2.png" alt="Event 2    " />
+                <img src="assets/img/clients/Plan.webp" alt="Event 2" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Services Section */}
-      <section className="featured-services-2">
+     {/* Upcoming Events Section */}
+     <section className="featured-events">
         <h2>Upcoming Events</h2>
-        <div className="feature-container">
-          <div className="feature-content">
-            {upcomingEvents.map((event) => (
-              <div className="f-img-container" key={event._id}>
-                <img
-                  className="f-img"
-                  src={event.eventImg}
-                  alt={event.eventTitle}
-                />
-                <i className="bi bi-briefcase"></i>
-                <h4>{event.eventTitle}</h4>
-                <p>{event.eventDescription}</p>
-                <button className="btn-primary f-btn">
-                  More</button>
-                <button className="btn-secondary f-btn">
-                  <a href={event.registrationURL} target="_blank">Register</a>
-                </button>
-              </div>
-            ))}
-          </div>
+        <div className="focus-container">
+          <EventCarousel items={upcomingEvents} />
         </div>
+      </section>
 
+      {/* Previous Events Section */}
+      <section className="previous-events">
         <h2>Previous Events</h2>
-        <div className="feature-container">
-          <div className="feature-content">
-            {previousEvents.map((event) => (
-              <div className="f-img-container" key={event._id}>
-                <img
-                  className="f-img"
-                  src={event.eventImg}
-                  alt={event.eventTitle}
-                />
-                <i className="bi bi-card-checklist"></i>
-                <h4>{event.eventTitle}</h4>
-                <p>{event.eventDescription}</p>
-                <button className="btn-primary f-btn">More</button>
-              </div>
-            ))}
-          </div>
+        <div className="focus-container">
+          <EventCarousel items={previousEvents} />
         </div>
       </section>
     </main>

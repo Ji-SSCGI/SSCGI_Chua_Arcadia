@@ -23,7 +23,7 @@ router
     .route("/:id")
     .get(validateIdParameters, getEvent)
     .delete(authenticateUser, validateIdParameters, deleteEvent)
-    .patch(authenticateUser, validateIdParameters, updateEvent)
+    .patch(authenticateUser, upload.single("eventImg"), validateIdParameters, updateEvent)
     ;
 
 export default router;                                                                          

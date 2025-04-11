@@ -1,20 +1,29 @@
-import React from "react";
-
-const FormRow = ({ type, name, labelText, defaultValue, onChange }) => {
+const FormRow = ({ type = "text", name, labelText, defaultValue = "", required = false, className = "" }) => {
   return (
-    <div className="form-row">
+    <div className={`form-row ${className}`}>
       <label htmlFor={name} className="form-label">
         {labelText || name}
       </label>
-      <input
-        type={type}
-        id={name}
-        name={name}
-        className="form-input"
-        defaultValue={defaultValue || ""}
-        onChange={onChange}
-        required
-      />
+
+      {type === "textarea" ? (
+        <textarea
+          id={name}
+          name={name}
+          className="form-textarea"
+          defaultValue={defaultValue}
+          required={required}
+          rows={5}
+        />
+      ) : (
+        <input
+          type={type}
+          id={name}
+          name={name}
+          className="form-input"
+          defaultValue={defaultValue}
+          required={required}
+        />
+      )}
     </div>
   );
 };

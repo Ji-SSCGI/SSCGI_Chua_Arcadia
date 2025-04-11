@@ -44,6 +44,11 @@ function HomeNavBar() {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="initiatives">
+                Initiatives
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="login">
                 Login
               </a>

@@ -7,34 +7,33 @@ const Footer = () => {
       <div className="container">
         {/* Top Section */}
         <div className="footer-top">
-          <h4>SUSTAINABILITY HUB</h4> 
-          <h5>Smarter Cities, Greener Communities.</h5>
+          <h3>SUSTAINABILITY HUB</h3> 
+          <h6>Smarter Cities, Greener Communities.</h6>
         </div>
 
         {/* Middle Section */}
         <div className="footer-middle">
           <div className="footer-left">
-            <h5>ARCADIA</h5>
-            <h6>Arcadia is a sustainability hub for companies, commited to advancing sustainability practices, and
+            <h4>ARCADIA</h4>
+            <p>Arcadia is a sustainability hub for companies, commited to advancing sustainability practices, and
               accelarating the transition to a circular economy.
-            </h6>
+            </p>
           </div>
           <div className="footer-center">
             <div>
-              <h5>Events</h5>
+              <h4>Events</h4>
             </div>
             <div>
-              <h5>Knowledge Portal</h5>
+              <h4>Knowledge Portal</h4>
             </div>
             <div>
-              <h5>Initiatives</h5>
+              <h4>Initiatives</h4>
             </div>
           </div>
           <div className="footer-right">
-            <h5>Contact Us</h5>
-            <p>kimchen08@gmail.com</p>
-            <p>+63969 666 3435</p>
-            <p>www.arcadia.org</p>
+            <h4>Contact Us</h4>
+            <h6>For general inquiries:</h6>
+            <p>gsm.arcadia@gmail.com</p>
           </div>
         </div>
 

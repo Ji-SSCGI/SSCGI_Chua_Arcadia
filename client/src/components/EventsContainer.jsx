@@ -6,6 +6,7 @@ import { useAllEventsContext } from "../pages/AllEvents";
 
 const EventsContainer = () => {
   const { data } = useAllEventsContext();
+  
   const { events, totalEvents, numOfPages } = data;
   if (events.length === 0) {
     return (

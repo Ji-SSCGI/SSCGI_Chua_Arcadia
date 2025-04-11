@@ -1,21 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Carousel = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAuto, setIsAuto] = useState(true); // Track if the carousel is in automatic mode
   const totalItems = items.length;
 
   // Handle navigation
   const handleNext = () => {
+    setIsAuto(false); // Disable auto mode when manually changing slides
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
   };
 
   const handlePrev = () => {
+    setIsAuto(false); // Disable auto mode when manually changing slides
     setCurrentIndex((prevIndex) => (prevIndex - 1 + totalItems) % totalItems);
   };
 
   const handleDotClick = (index) => {
+    setIsAuto(false); // Disable auto mode when clicking dots
     setCurrentIndex(index);
   };
+
+  // Automatic slide change
+  useEffect(() => {
+    if (isAuto) {
+      const interval = setInterval(() => {
+        handleNext();
+      }, 3000); // Change every 3 seconds (you can adjust this value)
+
+      // Cleanup interval on component unmount
+      return () => clearInterval(interval);
+    }
+  }, [currentIndex, isAuto]); // Dependency array includes currentIndex and isAuto
 
   return (
     <div className="carousel">
@@ -31,14 +47,6 @@ const Carousel = ({ items }) => {
           </div>
         ))}
       </div>
-
-      {/* Navigation Buttons */}
-      <button className="carousel-btn prev-btn" onClick={handlePrev}>
-        ‹
-      </button>
-      <button className="carousel-btn next-btn" onClick={handleNext}>
-        ›
-      </button>
 
       {/* Dot Indicators */}
       <div className="carousel-indicators">

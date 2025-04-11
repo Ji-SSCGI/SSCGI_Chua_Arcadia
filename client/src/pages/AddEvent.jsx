@@ -19,7 +19,6 @@ export const action = async ({ request }) => {
   try {
     // Send reservation data to backend
     const data = await customFetch.post("/events", formData);
-    console.log(data);
     toast.success("Event added successfully.");
     return redirect("/dashboard/all-events"); // Redirect after successful reservation creation
   } catch (error) {
