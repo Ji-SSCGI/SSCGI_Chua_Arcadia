@@ -33,20 +33,20 @@ const Wrapper = styled.article`
 
   /* For a circular icon with background image */
   .main-icon {
-    width: 10rem;
-    height: auto;
-    border-radius: 50%;
+    width: 170px; /* Adjust the size of the icon */
+    height: 100px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;
+    margin-right: 1rem; /* Space between the icon and partner name */
   }
 
   .partner-icon-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the image maintains aspect ratio */
+    border-radius: 50%; /* Make the image circular */
   }
 
   /* Info styles for name, email, etc */
