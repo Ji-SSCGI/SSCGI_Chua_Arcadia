@@ -1257,6 +1257,46 @@ section {
   }
 }
 
+/* Initiatives */
+.partner-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Stack top row and description */
+  gap: 1rem;
+}
+
+/* Row for image + name */
+.partner-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Image */
+.partner-img {
+  width: 150px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Name next to image */
+.partner-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Description below */
+.partner-description {
+  color: #555;
+  line-height: 1.4;
+}
+
 /* Footer */
 .footer {
   background-color: #f8f9fa;

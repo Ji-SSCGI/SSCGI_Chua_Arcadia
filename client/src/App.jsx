@@ -43,6 +43,7 @@ import { action as deletePartnerAction } from "./pages/DeletePartner";
 // Import Loader
 //import { loader as eventPageLoader } from "./components/EventsPage";
 import { loader as eventPageLoader } from "./components/EventsPage";
+import { loader as initiativePageLoader } from "./components/InitiativesPage";
 import { loader as dashboardLoader } from "./pages/DashboardLayout";
 import { loader as allEventsLoader } from "./pages/AllEvents";
 import { loader as editEventLoader } from "./pages/EditEvent";
@@ -99,6 +100,7 @@ const router = createBrowserRouter([
       {
         path: "initiatives",
         element: <Initiatives />,
+        loader: initiativePageLoader,
       },
       {
         path: "login",
