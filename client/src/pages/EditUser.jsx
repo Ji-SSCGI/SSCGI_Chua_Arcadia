@@ -15,7 +15,6 @@ import customFetch from "../utils/customFetch";
 export const loader = async ({ params }) => {
   try {
     const { data } = await customFetch.get(`/users/${params.id}`);
-    console.log(data);
 
     return { user: data };
   } catch (error) {

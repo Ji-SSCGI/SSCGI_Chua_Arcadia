@@ -29,11 +29,11 @@ const Footer = () => {
             <div>
               <h4>Initiatives</h4>
             </div>
-          </div>
-          <div className="footer-right">
-            <h4>Contact Us</h4>
-            <h6>For general inquiries:</h6>
+            <div>
+              <h4>Contact Us</h4>
+              <h6>For general inquiries:</h6>
             <p>gsm.arcadia@gmail.com</p>
+            </div>
           </div>
         </div>
 

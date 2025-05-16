@@ -17,8 +17,7 @@ export const loader = async ({ params }) => {
   try {
     // Make sure you're hitting the correct endpoint
     const { data } = await customFetch.get(`/events/${params.id}`);
-
-    console.log(data);
+    
     // Return the event data, it will be accessible in the EditEvent component
     return { event: data }; // Wrap the event data in an object
   } catch (error) {
@@ -28,15 +27,18 @@ export const loader = async ({ params }) => {
 };
 
 // Action for updating the event
-export const action = async ({ request}) => {
-  const formData = await request.formData();
+export const action = async ({ request, params}) => {
+  console.log(request);
+  
+  const data = await request.formData();
   
   try {
     await customFetch.patch(`/events/${params.id}`, data); // Send updated data to API
+    
     toast.success("Event updated successfully");
     return redirect("/dashboard/all-events");
   } catch (error) {
-    toast.error(error.response?.data?.msg || "Something went wrong");
+    //toast.error(error.response?.data?.msg || "Something went wrong");
     return error;
   }
 };
@@ -80,6 +82,13 @@ const EditEvent = () => {
             labelText="Event Type"
             defaultValue={event.event.eventType} 
             list={Object.values(EVENT_TYPE)} 
+          />
+          <FormRow
+            type="date"
+            name="eventDate"
+            labelText="Event Date"
+            defaultValue={event.event.e}
+            required
           />
           <button
             type="submit"

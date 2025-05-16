@@ -15,7 +15,9 @@ export async function action({ params }) {
 
 const DeleteEvent = () => {
   return (
-    <div>DeleteEvent</div>
+    <div>
+      Delete Event
+    </div>
   )
 }
 
