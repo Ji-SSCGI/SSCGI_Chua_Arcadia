@@ -11,6 +11,10 @@ import mongoSanitize from "express-mongo-sanitize";
 
 import cookieParser from 'cookie-parser';
 
+// SWAGGER IMPORT
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swagger.js';
+
 // CUSTOM ROUTER IMPORT 
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
@@ -61,6 +65,11 @@ app.use((req, res, next) => {
     next();
 });
 
+// SWAGGER UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'Arcadia API Documentation',
+}));
 
 app.get("/", (req, res) => {
     res.send("Hello World");
