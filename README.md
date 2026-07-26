@@ -11,6 +11,17 @@ Use the docs below as the main sources of truth:
 - Frontend documentation: [client/README.md](client/README.md)
 - Swagger/OpenAPI reference: [SWAGGER_TEMPLATES.md](SWAGGER_TEMPLATES.md)
 
+## Documentation policy
+
+Keep documentation intentionally small and predictable:
+
+- [README.md](README.md): onboarding, project map, and local run instructions
+- [README_BACKEND.md](README_BACKEND.md): backend architecture, API behavior, and server-side concerns
+- [client/README.md](client/README.md): frontend architecture, routes, and UI concerns
+- [SWAGGER_TEMPLATES.md](SWAGGER_TEMPLATES.md): Swagger annotation patterns and OpenAPI conventions
+
+If a change can be explained inside one of the four files above, do not create a new markdown file.
+
 ## What this app includes
 
 - Event creation and management
@@ -43,7 +54,7 @@ npm --prefix client install
 
 ### Environment variables
 
-Create a .env file in the project root with:
+Create a .env file in the project root with the backend values from [README_BACKEND.md](README_BACKEND.md):
 
 ```env
 NODE_ENV=development
@@ -85,6 +96,14 @@ server.js               # Express entry point
 - Backend setup and API reference: [README_BACKEND.md](README_BACKEND.md)
 - Frontend setup and architecture: [client/README.md](client/README.md)
 - Swagger examples and route annotations: [SWAGGER_TEMPLATES.md](SWAGGER_TEMPLATES.md)
+
+## How the project works
+
+1. The React frontend sends API requests to `/api/v1/*`.
+2. Vite proxies these requests to the Express server in development.
+3. Express routes call controllers, which apply validation/auth middleware and business logic.
+4. Controllers read and write data through Mongoose models.
+5. Responses return JSON to the client; Swagger UI reflects the documented route contracts.
 
 ## Notes
 

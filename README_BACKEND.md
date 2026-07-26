@@ -67,6 +67,14 @@ errors/               # Custom error classes
 server.js             # App entry point
 ```
 
+## Request lifecycle
+
+1. Request enters `server.js` and passes global middleware.
+2. Router in `routes/` matches the endpoint.
+3. Route-specific middleware handles authentication, validation, and upload parsing.
+4. Controller in `controllers/` executes use-case logic.
+5. Controller reads/writes MongoDB via `models/` and returns a JSON response.
+
 ## API overview
 
 ### Auth
@@ -108,6 +116,16 @@ Use Swagger UI for interactive API testing at http://localhost:5100/api-docs.
 - Keep route annotations in the route files.
 - Use [SWAGGER_TEMPLATES.md](SWAGGER_TEMPLATES.md) as the canonical example file for new docs.
 - If you add a new endpoint, document it in the route file with JSDoc comments so it appears in Swagger.
+
+## When to update this file
+
+Update this backend doc when any of the following changes:
+
+- API base paths or endpoint groups
+- middleware/auth strategy
+- environment variable requirements
+- upload/storage pipeline
+- backend startup commands
 
 ## Notes
 
